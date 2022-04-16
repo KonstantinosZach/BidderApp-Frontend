@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+  margin-top:20px;
+  background-color: honeydew;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+
+a {
+  color: blue;
+}
+
+a:hover{
+  color: red;
+}

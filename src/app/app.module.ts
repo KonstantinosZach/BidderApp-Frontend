@@ -4,14 +4,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {UserService} from "./user.service";
 import {HttpClientModule} from "@angular/common/http";
+import { appRoutingModule } from './app.routing';
+
+import { HomeComponent } from './home';
+import { LoginComponent } from './login';
+import { RegisterComponent } from './register';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    appRoutingModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

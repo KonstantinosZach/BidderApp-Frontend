@@ -1,6 +1,42 @@
-<div *ngFor="let user of users">
-  <div>
-    {{user.username}}
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link" routerLink="/">Home</a>
+    <a class="nav-item nav-link" routerLink="/login">Login</a>
+    <a class="nav-item nav-link" routerLink="/register">Register</a>
   </div>
+</nav>
 
+<!-- main content container -->
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!--<div class="container" id="main-container">-->
+<!--  <div class="column" >-->
+<!--    <div *ngFor="let user of users" class="card">-->
+<!--      <div class="card-upper-body">-->
+<!--          <a href=""><img src="{{user?.imageUrl}}" alt="profile picture" class="picture"></a>-->
+<!--      </div>-->
+<!--      <div class="card-center-body">-->
+<!--          <ul>-->
+<!--            <li>Username: {{user?.username}}</li>-->
+<!--            <li>First Name: {{user?.firstname}}</li>-->
+<!--            <li>Last Name: {{user?.lastname}}</li>-->
+<!--            <li>Email: {{user?.email}} </li>-->
+<!--            <li>Phone number: {{user?.phone}}</li>-->
+<!--          </ul>-->
+<!--      </div>-->
+<!--      <div class="=card-low-body">-->
+<!--          <button type="button" onclick="alert('Edit user')" class="edit-button">Edit</button>-->
+<!--          <button type="button" onclick="alert('Delete user')" class="delete-button"> Delete</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
