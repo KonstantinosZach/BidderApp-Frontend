@@ -1,16 +1,20 @@
 import { Routes, RouterModule } from '@angular/router';
-
-import { HomeComponent } from './home';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
+import { NgModule } from "@angular/core";
+import { UserList } from "./userList/user.list";
+import { CreateUser } from "./createUser/create.user";
+import { UpdateUser } from "./updateUser/update.user";
+import { userDetail } from "./userDetails/user.detail";
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-
-  // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  {path: `users`, component: UserList},
+  {path: `create-user`, component: CreateUser},
+  {path: `update-user/:username`, component: UpdateUser},
+  {path: `user-detail/:username`, component: userDetail},
+  {path: ``, redirectTo: `users`, pathMatch: `full`},
 ];
 
-export const appRoutingModule = RouterModule.forRoot(routes);
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

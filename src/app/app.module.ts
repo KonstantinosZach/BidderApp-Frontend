@@ -2,27 +2,29 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import {UserService} from "./user.service";
-import {HttpClientModule} from "@angular/common/http";
-import { appRoutingModule } from './app.routing';
-
-import { HomeComponent } from './home';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
+import { HttpClientModule } from "@angular/common/http";
+import { UserList } from "./userList/user.list";
+import { CreateUser } from  "./createUser/create.user"
+import { AppRoutingModule } from "./app.routing";
+import { FormsModule } from "@angular/forms";
+import { UpdateUser } from "./updateUser/update.user";
+import { userDetail } from "./userDetails/user.detail";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    LoginComponent,
-    RegisterComponent
+    UserList,
+    CreateUser,
+    UpdateUser,
+    userDetail
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    appRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
