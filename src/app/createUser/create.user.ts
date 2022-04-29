@@ -26,7 +26,7 @@ export class CreateUser implements  OnInit {
         console.log(),
         this.router.navigate([`users`])
       },
-      error: () => {console.log();}
+      error: () => {console.log(); alert("User already exists")}
     })
   }
 

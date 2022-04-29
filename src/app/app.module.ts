@@ -9,6 +9,8 @@ import { AppRoutingModule } from "./app.routing";
 import { FormsModule } from "@angular/forms";
 import { UpdateUser } from "./updateUser/update.user";
 import { userDetail } from "./userDetails/user.detail";
+import { WelcomeUser} from "./welcomeUser/welcome.user";
+import { LogInUser } from "./logInUser/log.in.user";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { userDetail } from "./userDetails/user.detail";
     UserList,
     CreateUser,
     UpdateUser,
-    userDetail
+    userDetail,
+    WelcomeUser,
+    LogInUser
   ],
   imports: [
     BrowserModule,
