@@ -1,3 +1,11 @@
+<nav class = " navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class = "navbar-nav">
+    <li class = "nav-link">
+      <a routerLink = "../admin-page" routerLinkActive = "active" class = "nav-link"> Admin Page </a>
+    </li>
+  </ul>
+</nav>
+
 <h2>User List</h2>
 <table class = "table table-striped">
   <thead>
@@ -11,25 +19,27 @@
       <th>Phone</th>
       <th>Post Number</th>
       <th>AFM</th>
+      <th>Accepted</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor = "let user of users">
-      <td> {{ user.username}}</td>
-      <td> {{user.firstname}}</td>
-      <td> {{user.address}}</td>
-      <td> {{user.password}}</td>
-      <td> {{user.lastname}}</td>
-      <td> {{user.email}}</td>
-      <td> {{user.phone}}</td>
-      <td> {{user.postNumber}}</td>
-      <td> {{user.afm}}</td>
-      <td>
-        <button (click) = "updateUser(user.username)" class = "btn btn-info"> Update </button>
-        <button (click) = "deleteUser(user.username)" class = "btn btn-danger" style="margin-left: 5px"> Delete </button>
-        <button (click) = "detailUser(user.username)" class = "btn btn-info" style="margin-left: 5px"> Details </button>
-      </td>
+        <td *ngIf="user.accepted" > {{ user.username}}</td>
+        <td *ngIf="user.accepted" > {{user.firstname}}</td>
+        <td *ngIf="user.accepted"> {{user.address}}</td>
+        <td *ngIf="user.accepted"> {{user.password}}</td>
+        <td *ngIf="user.accepted"> {{user.lastname}}</td>
+        <td *ngIf="user.accepted"> {{user.email}}</td>
+        <td *ngIf="user.accepted"> {{user.phone}}</td>
+        <td *ngIf="user.accepted"> {{user.postNumber}}</td>
+        <td *ngIf="user.accepted"> {{user.afm}}</td>
+        <td *ngIf="user.accepted"> {{user.accepted}}</td>
+        <td *ngIf="user.accepted">
+          <button (click) = "updateUser(user.username)" class = "btn btn-info"> Update </button>
+          <button (click) = "deleteUser(user.username)" class = "btn btn-danger" style="margin-left: 5px"> Delete </button>
+          <button (click) = "detailUser(user.username)" class = "btn btn-info" style="margin-left: 5px"> Details </button>
+        </td>
     </tr>
   </tbody>
 </table>

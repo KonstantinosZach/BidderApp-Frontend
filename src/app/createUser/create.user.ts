@@ -24,7 +24,7 @@ export class CreateUser implements  OnInit {
     this.userService.addUser(this.user).subscribe({
       complete: () => {
         console.log(),
-        this.router.navigate([`users`])
+        this.router.navigate([`pending-page/`, this.user.username])
       },
       error: () => {console.log(); alert("User already exists")}
     })

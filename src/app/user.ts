@@ -9,4 +9,6 @@ export interface User {
   postNumber: string;
   afm: string;
   imageUrl: string;
+  admin: boolean;
+  accepted: boolean;
 }

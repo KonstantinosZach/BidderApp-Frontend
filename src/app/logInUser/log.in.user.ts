@@ -24,7 +24,12 @@ export class LogInUser implements  OnInit {
         console.log(data);
         this.user = data;
         if(this.user.password === this.password)
-          this.router.navigate([`user-detail/`, this.username]);
+          if(this.user.admin === true)
+            this.router.navigate([`admin-page`]);
+          else if(this.user.accepted === false)
+            this.router.navigate([`pending-page/`, this.username]);
+          else
+            this.router.navigate([`user-detail/`, this.username]);
         else
           alert("invalid password")
       },

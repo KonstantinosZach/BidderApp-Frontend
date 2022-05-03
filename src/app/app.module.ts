@@ -11,6 +11,10 @@ import { UpdateUser } from "./updateUser/update.user";
 import { userDetail } from "./userDetails/user.detail";
 import { WelcomeUser} from "./welcomeUser/welcome.user";
 import { LogInUser } from "./logInUser/log.in.user";
+import { adminPage } from "./adminPage/admin.page";
+import { pendingPage } from "./pendingPage/pending.page";
+import {PendingUserList} from "./pendingUserList/pending.user.list"
+
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { LogInUser } from "./logInUser/log.in.user";
     UpdateUser,
     userDetail,
     WelcomeUser,
-    LogInUser
+    LogInUser,
+    adminPage,
+    pendingPage,
+    PendingUserList
   ],
   imports: [
     BrowserModule,

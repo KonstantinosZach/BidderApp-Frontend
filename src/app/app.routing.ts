@@ -6,6 +6,10 @@ import { UpdateUser } from "./updateUser/update.user";
 import { userDetail } from "./userDetails/user.detail";
 import { WelcomeUser} from "./welcomeUser/welcome.user";
 import { LogInUser} from "./logInUser/log.in.user";
+import { adminPage } from "./adminPage/admin.page";
+import { pendingPage } from "./pendingPage/pending.page";
+import {PendingUserList} from "./pendingUserList/pending.user.list";
+
 
 const routes: Routes = [
   {path: `users`, component: UserList},
@@ -14,6 +18,9 @@ const routes: Routes = [
   {path: `user-detail/:username`, component: userDetail},
   {path: `welcome-user`, component: WelcomeUser},
   {path: `log-in-user`, component: LogInUser},
+  {path: `admin-page`, component: adminPage},
+  {path: `pending-page/:username`, component: pendingPage},
+  {path: `pending-user-list`, component: PendingUserList},
   {path: ``, redirectTo: `welcome-user`, pathMatch: `full`},
 ];
 

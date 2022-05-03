@@ -1,5 +1,13 @@
-<h3> {{user.username}}'s Details</h3>
-<div>
+<nav class = " navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class = "navbar-nav">
+      <li class = "nav-link">
+        <a routerLink = "../../welcome-user" routerLinkActive = "active" class = "nav-link"> Log out </a>
+      </li>
+    </ul>
+</nav>
+
+<div class="container" >
+  <h3> {{user.username}}'s Details</h3>
 
   <div>
     <label> <b> Password: </b></label> {{user.password}}
@@ -32,6 +40,6 @@
   <div>
   <label> <b> Afm: </b></label> {{user.afm}}
   </div><br>
-
 </div>
+
 
