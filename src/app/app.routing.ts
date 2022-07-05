@@ -10,6 +10,7 @@ import { adminPage } from "./adminPage/admin.page";
 import { pendingPage } from "./pendingPage/pending.page";
 import { PendingUserList } from "./pendingUserList/pending.user.list";
 import {userPage} from "./userPage/user.page";
+import {SellingPage} from "./sellingPage/selling.page";
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path: `pending-page/:username`, component: pendingPage},
   {path: `pending-user-list`, component: PendingUserList},
   {path: ``, redirectTo: `welcome-user`, pathMatch: `full`},
-  {path: `user-page/:username`, component: userPage}
+  {path: `user-page/:username`, component: userPage},
+  {path: `user-page/:username/selling-page`, component: SellingPage},
 ];
 
 @NgModule({

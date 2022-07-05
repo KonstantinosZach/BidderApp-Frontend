@@ -1,6 +1,9 @@
 import { Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {SellerService} from "../seller.service";
+import {Seller} from "../seller";
+import {User} from "../user";
+import {Observable} from "rxjs";
 
 @Component( {
   selector: `user-page`,
@@ -12,7 +15,8 @@ export class userPage implements  OnInit {
   username: String | undefined;
   valid = false;
 
-  constructor(private sellerService: SellerService, private router: ActivatedRoute) {}
+  constructor(private sellerService: SellerService, private router: ActivatedRoute,
+              private navRouter: Router) {}
 
   ngOnInit():void {
     this.username = this.router.snapshot.params['username'];
@@ -31,11 +35,14 @@ export class userPage implements  OnInit {
   }
 
   goSell(){
-    //this.router2.navigate([`update-user`,username]);
+    this.navRouter.navigate([`user-page`,this.username,`selling-page`]);
   }
 
   createSeller(){
-    //this.router2.navigate([`user-detail`,username]);
+    this.sellerService.addSeller(this.username).subscribe( data =>{
+      console.log(data);
+      this.navRouter.navigate([`user-page`,this.username,`selling-page`]);
+    });
   }
 
 }

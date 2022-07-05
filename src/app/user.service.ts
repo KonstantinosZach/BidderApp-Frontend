@@ -36,5 +36,4 @@ export class UserService {
   public acceptUser(username: String | undefined): Observable<User> {
     return this.http.put<User>(`${this.apiServerUrl}/user/accept/${username}`,username);
   }
-
 }

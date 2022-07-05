@@ -16,4 +16,8 @@ export class SellerService {
   public getSellerByUsername(username: String | undefined): Observable<Seller>{
     return this.http.get<Seller>(`${this.apiServerUrl}/seller/find/${username}`);
   }
+
+  public addSeller(username: String | undefined): Observable<Seller> {
+    return this.http.post<Seller>(`${this.apiServerUrl}/seller/add/${username}`, {});
+  }
 }
