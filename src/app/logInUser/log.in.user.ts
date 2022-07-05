@@ -29,7 +29,7 @@ export class LogInUser implements  OnInit {
           else if(this.user.accepted === false)
             this.router.navigate([`pending-page/`, this.username]);
           else
-            this.router.navigate([`user-detail/`, this.username]);
+            this.router.navigate([`user-page/`, this.username]);
         else
           alert("invalid password")
       },

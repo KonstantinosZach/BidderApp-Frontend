@@ -13,8 +13,8 @@ import { WelcomeUser} from "./welcomeUser/welcome.user";
 import { LogInUser } from "./logInUser/log.in.user";
 import { adminPage } from "./adminPage/admin.page";
 import { pendingPage } from "./pendingPage/pending.page";
-import {PendingUserList} from "./pendingUserList/pending.user.list"
-
+import { PendingUserList } from "./pendingUserList/pending.user.list"
+import { userPage } from  "./userPage/user.page"
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import {PendingUserList} from "./pendingUserList/pending.user.list"
     LogInUser,
     adminPage,
     pendingPage,
-    PendingUserList
+    PendingUserList,
+    userPage
   ],
   imports: [
     BrowserModule,
