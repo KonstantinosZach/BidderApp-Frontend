@@ -8,3 +8,12 @@
     </li>
   </ul>
 </nav>
+
+<div class="sellerButton">
+  <td *ngIf="!valid">
+    <button (click) = "createSeller()" class = "btn btn-success"> Become Seller! </button>
+  </td>
+  <td *ngIf="valid">
+    <button (click) = "goSell()" class = "btn btn-info"> Go Sell </button>
+  </td>
+</div>

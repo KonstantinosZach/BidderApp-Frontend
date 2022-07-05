@@ -1,0 +1,19 @@
+.sellerButton{
+  margin: 0;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn-info{
+  width: 150px;
+  font-size: 25px;
+  color: whitesmoke;
+}
+.btn-success{
+  width: 150px;
+  font-size: 25px;
+  color: whitesmoke;
+}
