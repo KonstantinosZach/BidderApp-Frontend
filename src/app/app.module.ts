@@ -15,7 +15,9 @@ import { adminPage } from "./adminPage/admin.page";
 import { pendingPage } from "./pendingPage/pending.page";
 import { PendingUserList } from "./pendingUserList/pending.user.list"
 import { userPage } from  "./userPage/user.page"
-import {SellingPage} from "./sellingPage/selling.page";
+import { SellingPage } from "./sellingPage/selling.page";
+import { ItemsList } from "./itemsList/items.list";
+import { createAuction } from "./createAuction/create.auction";
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import {SellingPage} from "./sellingPage/selling.page";
     pendingPage,
     PendingUserList,
     userPage,
-    SellingPage
+    SellingPage,
+    ItemsList,
+    createAuction
   ],
   imports: [
     BrowserModule,

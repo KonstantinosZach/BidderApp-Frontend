@@ -11,6 +11,8 @@ import { pendingPage } from "./pendingPage/pending.page";
 import { PendingUserList } from "./pendingUserList/pending.user.list";
 import {userPage} from "./userPage/user.page";
 import {SellingPage} from "./sellingPage/selling.page";
+import {ItemsList} from "./itemsList/items.list";
+import {createAuction} from "./createAuction/create.auction";
 
 
 const routes: Routes = [
@@ -26,6 +28,8 @@ const routes: Routes = [
   {path: ``, redirectTo: `welcome-user`, pathMatch: `full`},
   {path: `user-page/:username`, component: userPage},
   {path: `user-page/:username/selling-page`, component: SellingPage},
+  {path: `user-page/:username/selling-page/items-list-page`, component: ItemsList},
+  {path: `user-page/:username/selling-page/create-auction`, component: createAuction}
 ];
 
 @NgModule({
