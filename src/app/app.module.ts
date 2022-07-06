@@ -18,6 +18,8 @@ import { userPage } from  "./userPage/user.page"
 import { SellingPage } from "./sellingPage/selling.page";
 import { ItemsList } from "./itemsList/items.list";
 import { createAuction } from "./createAuction/create.auction";
+import {startAuction} from "./startAuction/start.auction";
+import {UpdateItem} from "./updateItem/update.item";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { createAuction } from "./createAuction/create.auction";
     userPage,
     SellingPage,
     ItemsList,
-    createAuction
+    createAuction,
+    startAuction,
+    UpdateItem
   ],
   imports: [
     BrowserModule,

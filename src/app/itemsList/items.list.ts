@@ -1,6 +1,6 @@
 import { Component, OnInit} from "@angular/core";
 import {SellerService} from "../seller.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 import {Items} from "../item";
 
@@ -14,7 +14,7 @@ export class ItemsList implements  OnInit {
   username: String | undefined;
   public items: Items[] | undefined;
 
-  constructor(private sellerService: SellerService, private router: ActivatedRoute) {}
+  constructor(private sellerService: SellerService, private router: ActivatedRoute, private navRouter: Router) {}
 
   ngOnInit():void {
     this.username = this.router.snapshot.params['username'];
@@ -25,16 +25,19 @@ export class ItemsList implements  OnInit {
 
   }
 
-  startAuction(){
-
+  startAuction(item:Items){
+    this.navRouter.navigate([`user-page`,this.username,`selling-page`,item.id,`start-auction`]);
   }
 
-  deleteItem(){
-
+  deleteItem(item: Items){
+    this.sellerService.deleteItem(item.id).subscribe( data =>{
+      console.log(data);
+      this.getSellerItems();
+    })
   }
 
-  updateItem(){
-
+  updateItem(item:Items){
+    this.navRouter.navigate([`user-page`,this.username,`selling-page`,item.id,`update-item`]);
   }
 
   getSellerItems(){

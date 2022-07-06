@@ -35,20 +35,20 @@
     <td> {{item.ends}} </td>
     <td> {{item.description}} </td>
 
-    <td>
+    <td *ngIf="item.numberOfBids > 0">
       <button (click) = "seeBids()" class = "btn btn-info"> See Bids </button>
     </td>
 
-    <td>
-      <button (click) = "startAuction()" class = "btn btn-success"> Start Auction </button>
+    <td *ngIf="item.started == ''">
+      <button (click) = "startAuction(item)" class = "btn btn-success"> Start Auction </button>
     </td>
 
-    <td>
-      <button (click) = "deleteItem()" class = "btn btn-danger"> Delete Item </button>
+    <td *ngIf="item.numberOfBids < 1">
+      <button (click) = "deleteItem(item)" class = "btn btn-danger"> Delete Item </button>
     </td>
 
-    <td>
-      <button (click) = "updateItem()" class = "btn btn-warning"> Update Item </button>
+    <td *ngIf="item.numberOfBids < 1">
+      <button (click) = "updateItem(item)" class = "btn btn-warning"> Update Item </button>
     </td>
 
   </tr>

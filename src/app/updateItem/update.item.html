@@ -1,0 +1,62 @@
+<nav class = " navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class = "navbar-nav">
+    <li class = "nav-link">
+      <a routerLink = "../../items-list-page" routerLinkActive = "active" class = "nav-link"> Back </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="col-md-6 offset-md-3">
+
+  <h3> Update User</h3>
+
+  <form (ngSubmit) = "onSubmit()">
+
+    <div class = "form-group">
+      <label> Name </label>
+      <input type = "text" class = "form-control" id = "name"
+             [(ngModel)] = "item.name" name = "name" >
+    </div>
+
+    <div class = "form-group">
+      <label> Buy Price </label>
+      <input type = "text" class = "form-control" id = "buyPrice"
+             [(ngModel)] = "item.buyPrice" name = "buyPrice" >
+    </div>
+
+    <div class = "form-group">
+      <label> Category </label>
+      <input type = "text" class = "form-control" id = "category"
+             [(ngModel)] = "item.category" name = "category" >
+    </div>
+
+    <div class = "form-group">
+      <label> Country </label>
+      <input type = "text" class = "form-control" id = "country"
+             [(ngModel)] = "item.country" name = "country" >
+    </div>
+
+    <div class = "form-group">
+      <label> Location </label>
+      <input type = "text" class = "form-control" id = "location"
+             [(ngModel)] = "item.location" name = "location" >
+    </div>
+
+    <div class = "form-group">
+      <label> First Bid </label>
+      <input type = "text" class = "form-control" id = "firstBid"
+             [(ngModel)] = "item.firstBid" name = "firstBid" >
+    </div>
+
+    <div class = "form-group">
+      <label> Description </label>
+      <input type = "text" class = "form-control" id = "description"
+             [(ngModel)] = "item.description" name = "description" >
+    </div>
+
+    <br>
+    <button class = "btn btn-success" type = "submit">Update</button>
+
+  </form>
+
+</div>

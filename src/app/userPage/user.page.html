@@ -8,7 +8,10 @@
     </li>
   </ul>
 </nav>
-<h1>HELLO USER!</h1>
+<div class = "title">
+  <h1>HELLO {{username}} !</h1>
+</div>
+
 <div class="sellerButton">
   <td *ngIf="!valid">
     <button (click) = "createSeller()" class = "btn btn-success"> Become Seller! </button>

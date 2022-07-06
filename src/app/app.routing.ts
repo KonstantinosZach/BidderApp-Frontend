@@ -13,6 +13,8 @@ import {userPage} from "./userPage/user.page";
 import {SellingPage} from "./sellingPage/selling.page";
 import {ItemsList} from "./itemsList/items.list";
 import {createAuction} from "./createAuction/create.auction";
+import {startAuction} from "./startAuction/start.auction";
+import {UpdateItem} from "./updateItem/update.item";
 
 
 const routes: Routes = [
@@ -29,7 +31,9 @@ const routes: Routes = [
   {path: `user-page/:username`, component: userPage},
   {path: `user-page/:username/selling-page`, component: SellingPage},
   {path: `user-page/:username/selling-page/items-list-page`, component: ItemsList},
-  {path: `user-page/:username/selling-page/create-auction`, component: createAuction}
+  {path: `user-page/:username/selling-page/create-auction`, component: createAuction},
+  {path: `user-page/:username/selling-page/:id/start-auction`, component: startAuction},
+  {path: `user-page/:username/selling-page/:id/update-item`, component: UpdateItem},
 ];
 
 @NgModule({

@@ -26,7 +26,7 @@ export class createAuction implements  OnInit {
         console.log(),
           this.navRouter.navigate([`user-page`,this.username,`selling-page`,`items-list-page`])
       },
-      error: () => {console.log(); alert("User already exists")}
+      error: () => {console.log(); alert("Wrong input... try again")}
     })
   }
 

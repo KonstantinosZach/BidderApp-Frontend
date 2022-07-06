@@ -29,10 +29,6 @@ export class UserList implements  OnInit {
     this.router.navigate([`update-user`,username]);
   }
 
-  detailUser(username: String){
-    this.router.navigate([`user-detail`,username]);
-  }
-
   deleteUser(username: String){
     this.userService.deleteUser(username).subscribe( data =>{
       console.log(data);
