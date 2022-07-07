@@ -13,10 +13,20 @@
 </div>
 
 <div class="sellerButton">
-  <td *ngIf="!valid">
+  <td *ngIf="!sellerValid">
     <button (click) = "createSeller()" class = "btn btn-success"> Become Seller! </button>
   </td>
-  <td *ngIf="valid">
+  <td *ngIf="sellerValid">
     <button (click) = "goSell()" class = "btn btn-info"> Go Sell </button>
   </td>
 </div>
+
+<div class="bidderButton">
+  <td *ngIf="!bidderValid">
+    <button (click) = "createBidder()" class = "btn btn-success"> Become Bidder! </button>
+  </td>
+  <td *ngIf="bidderValid">
+    <button (click) = "goBid()" class = "btn btn-info"> Go Bid </button>
+  </td>
+</div>
+

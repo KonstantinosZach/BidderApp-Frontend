@@ -7,6 +7,15 @@
   transform: translate(-50%, -50%);
 }
 
+.bidderButton{
+  margin: 0;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 .btn-info{
   width: 150px;
   font-size: 25px;

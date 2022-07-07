@@ -1,9 +1,7 @@
 import { Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SellerService} from "../seller.service";
-import {Seller} from "../seller";
-import {User} from "../user";
-import {Observable} from "rxjs";
+import {BidderService} from "../bidder.service";
 
 @Component( {
   selector: `user-page`,
@@ -13,29 +11,47 @@ import {Observable} from "rxjs";
 
 export class userPage implements  OnInit {
   username: String | undefined;
-  valid = false;
+  sellerValid = false;
+  bidderValid = false;
 
   constructor(private sellerService: SellerService, private router: ActivatedRoute,
-              private navRouter: Router) {}
+              private navRouter: Router, private  bidderService: BidderService) {}
 
   ngOnInit():void {
     this.username = this.router.snapshot.params['username'];
     this.isSeller();
+    this.isBidder();
   }
 
   isSeller(){
     this.sellerService.getSellerByUsername(this.username).subscribe( result => {
       if (result) {
         console.log(result);
-        this.valid = true;
+        this.sellerValid = true;
       } else {
-        this.valid = false;
+        this.sellerValid = false;
       }
     })
   }
 
+  isBidder(){
+    this.bidderService.getBidderByUsername(this.username).subscribe( result => {
+      if (result) {
+        console.log(result);
+        this.bidderValid = true;
+      } else {
+        this.bidderValid = false;
+      }
+    })
+  }
+
+
   goSell(){
     this.navRouter.navigate([`user-page`,this.username,`selling-page`]);
+  }
+
+  goBid(){
+    this.navRouter.navigate([`user-page`,this.username,`bidding-page`]);
   }
 
   createSeller(){
@@ -43,6 +59,10 @@ export class userPage implements  OnInit {
       console.log(data);
       this.navRouter.navigate([`user-page`,this.username,`selling-page`]);
     });
+  }
+
+  createBidder(){
+    this.navRouter.navigate([`user-page`,this.username,`create-bidder`]);
   }
 
 }

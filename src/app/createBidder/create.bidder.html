@@ -1,0 +1,30 @@
+<nav class = " navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class = "navbar-nav">
+    <li class = "nav-link">
+      <a routerLink = "../../{{username}}" routerLinkActive = "active" class = "nav-link"> Back </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="col-md-6 offset-md-3">
+
+  <h3> Create Bidder</h3>
+  <form (ngSubmit) = "onSubmit()">
+
+    <div class = "form-group">
+      <label> Location</label>
+      <input type = "text" class = "form-control" id = "location"
+             [(ngModel)] = "bidder.location" name = "location" >
+    </div>
+
+    <div class = "form-group">
+      <label> Country </label>
+      <input type = "text" class = "form-control" id = "country"
+             [(ngModel)] = "bidder.country" name = "country" >
+    </div>
+
+    <br>
+    <button class = "btn btn-success" type = "submit">Submit</button>
+
+  </form>
+</div>

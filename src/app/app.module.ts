@@ -18,8 +18,10 @@ import { userPage } from  "./userPage/user.page"
 import { SellingPage } from "./sellingPage/selling.page";
 import { ItemsList } from "./itemsList/items.list";
 import { createAuction } from "./createAuction/create.auction";
-import {startAuction} from "./startAuction/start.auction";
-import {UpdateItem} from "./updateItem/update.item";
+import { startAuction } from "./startAuction/start.auction";
+import { UpdateItem } from "./updateItem/update.item";
+import { createBidder } from "./createBidder/create.bidder";
+import { bidderPage } from "./bidderPage/bidder.page";
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import {UpdateItem} from "./updateItem/update.item";
     ItemsList,
     createAuction,
     startAuction,
-    UpdateItem
+    UpdateItem,
+    createBidder,
+    bidderPage
   ],
   imports: [
     BrowserModule,

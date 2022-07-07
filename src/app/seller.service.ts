@@ -24,7 +24,37 @@ export class SellerService {
   }
 
   public getSellerItems(username: String | undefined): Observable<Items[]> {
-    return this.http.get<Items[]>(`${this.apiServerUrl}/item/find/${username}`);
+    return this.http.get<Items[]>(`${this.apiServerUrl}/item/find-seller-items/${username}`);
+  }
+
+  public convertCurrentDate(): string{
+    let month: string;
+    let day: string;
+    let min: string;
+    let hour: string;
+    let start = new Date();
+
+    if(start.getMonth().toString().length == 1)
+      month = "0" + (start.getMonth() + 1);
+    else
+      month = (start.getMonth() + 1).toString();
+
+    if(start.getDate().toString().length == 1)
+      day = "0" + start.getDate();
+    else
+      day = start.getDate().toString();
+
+    if(start.getMinutes().toString().length == 1)
+      min = "0" + start.getMinutes();
+    else
+      min = start.getMinutes().toString();
+
+    if(start.getHours().toString().length == 1)
+      hour = "0" + start.getHours();
+    else
+      hour = start.getHours().toString();
+
+    return start.getFullYear() + "-" + month + "-" + day + " " + hour + ":" + min;
   }
 
   public addItem(username: String | undefined, item: Items): Observable<Items> {

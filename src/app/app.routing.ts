@@ -15,6 +15,8 @@ import {ItemsList} from "./itemsList/items.list";
 import {createAuction} from "./createAuction/create.auction";
 import {startAuction} from "./startAuction/start.auction";
 import {UpdateItem} from "./updateItem/update.item";
+import {createBidder} from "./createBidder/create.bidder";
+import {bidderPage} from "./bidderPage/bidder.page";
 
 
 const routes: Routes = [
@@ -34,6 +36,8 @@ const routes: Routes = [
   {path: `user-page/:username/selling-page/create-auction`, component: createAuction},
   {path: `user-page/:username/selling-page/:id/start-auction`, component: startAuction},
   {path: `user-page/:username/selling-page/:id/update-item`, component: UpdateItem},
+  {path: `user-page/:username/create-bidder`, component: createBidder},
+  {path: `user-page/:username/bidding-page`, component: bidderPage},
 ];
 
 @NgModule({
