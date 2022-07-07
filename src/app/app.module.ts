@@ -16,7 +16,7 @@ import { pendingPage } from "./pendingPage/pending.page";
 import { PendingUserList } from "./pendingUserList/pending.user.list"
 import { userPage } from  "./userPage/user.page"
 import { SellingPage } from "./sellingPage/selling.page";
-import { ItemsList } from "./itemsList/items.list";
+import { OldItemsList } from "./OldItemsList/old.items.list";
 import { createAuction } from "./createAuction/create.auction";
 import { startAuction } from "./startAuction/start.auction";
 import { UpdateItem } from "./updateItem/update.item";
@@ -37,7 +37,7 @@ import { bidderPage } from "./bidderPage/bidder.page";
     PendingUserList,
     userPage,
     SellingPage,
-    ItemsList,
+    OldItemsList,
     createAuction,
     startAuction,
     UpdateItem,

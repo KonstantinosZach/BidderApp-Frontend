@@ -24,7 +24,7 @@ export class createAuction implements  OnInit {
     this.sellerService.addItem(this.username, this.item).subscribe({
       complete: () => {
         console.log(),
-          this.navRouter.navigate([`user-page`,this.username,`selling-page`,`items-list-page`])
+          this.navRouter.navigate([`user-page`,this.username,`selling-page`])
       },
       error: () => {console.log(); alert("Wrong input... try again")}
     })

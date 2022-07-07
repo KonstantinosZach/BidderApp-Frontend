@@ -32,7 +32,7 @@ export class UpdateItem implements  OnInit {
   onSubmit(){
     this.sellerService.updateItem(this.id, this.item).subscribe(data =>{
         console.log(data);
-        this.back.navigate([`user-page`,this.username,`selling-page`,`items-list-page`]);
+        this.back.navigate([`user-page`,this.username,`selling-page`]);
       },
       error => console.log(error));
   }

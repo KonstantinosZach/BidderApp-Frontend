@@ -31,7 +31,7 @@ export class startAuction implements  OnInit {
       else {
         this.sellerService.updateItem(this.id, this.items).subscribe(data =>{
           console.log(data);
-          this.navRouter.navigate([`user-page`,this.username,`selling-page`,`items-list-page`]);
+          this.navRouter.navigate([`user-page`,this.username,`selling-page`]);
         })
       }
 

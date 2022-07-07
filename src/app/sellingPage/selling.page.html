@@ -4,10 +4,65 @@
       <a routerLink = "../" routerLinkActive = "active" class = "nav-link"> Back </a>
     </li>
     <li class = "nav-link">
-      <a routerLink = "../selling-page/items-list-page" routerLinkActive = "active" class = "nav-link"> See Your Items </a>
+      <a routerLink = "../selling-page/old-items-list-page" routerLinkActive = "active" class = "nav-link"> See Old Auctions </a>
     </li>
     <li class = "nav-link">
       <a routerLink = "../selling-page/create-auction" routerLinkActive = "active" class = "nav-link"> Create Auction </a>
     </li>
   </ul>
 </nav>
+
+<body>
+<h2>Active Auctions</h2>
+<table class = "table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Buy Price</th>
+    <th>First Bid</th>
+    <th>Currently</th>
+    <th>Number of bids</th>
+    <th>location</th>
+    <th>Country</th>
+    <th>Started</th>
+    <th>Ends</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor = "let item of activeItems">
+    <td> {{item.name}} </td>
+    <td> {{item.category}} </td>
+    <td> {{item.buyPrice}}</td>
+    <td> {{item.currently}}</td>
+    <td> {{item.firstBid}} </td>
+    <td> {{item.numberOfBids}} </td>
+    <td> {{item.location}} </td>
+    <td> {{item.country}} </td>
+    <td> {{item.started}} </td>
+    <td> {{item.ends}} </td>
+    <td> {{item.description}} </td>
+
+    <td *ngIf="item.numberOfBids > 0">
+      <button (click) = "seeBids()" class = "btn btn-info"> See Bids </button>
+    </td>
+
+    <td *ngIf="item.started == ''">
+      <button (click) = "startAuction(item)" class = "btn btn-success"> Start Auction </button>
+    </td>
+
+    <td *ngIf="item.numberOfBids < 1">
+      <button (click) = "deleteItem(item)" class = "btn btn-danger"> Delete Item </button>
+    </td>
+
+    <td *ngIf="item.numberOfBids < 1">
+      <button (click) = "updateItem(item)" class = "btn btn-warning"> Update Item </button>
+    </td>
+
+  </tr>
+  </tbody>
+</table>
+<br>
+<br>
+</body>

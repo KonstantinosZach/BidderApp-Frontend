@@ -11,7 +11,7 @@ import { pendingPage } from "./pendingPage/pending.page";
 import { PendingUserList } from "./pendingUserList/pending.user.list";
 import {userPage} from "./userPage/user.page";
 import {SellingPage} from "./sellingPage/selling.page";
-import {ItemsList} from "./itemsList/items.list";
+import {OldItemsList} from "./OldItemsList/old.items.list";
 import {createAuction} from "./createAuction/create.auction";
 import {startAuction} from "./startAuction/start.auction";
 import {UpdateItem} from "./updateItem/update.item";
@@ -32,7 +32,7 @@ const routes: Routes = [
   {path: ``, redirectTo: `welcome-user`, pathMatch: `full`},
   {path: `user-page/:username`, component: userPage},
   {path: `user-page/:username/selling-page`, component: SellingPage},
-  {path: `user-page/:username/selling-page/items-list-page`, component: ItemsList},
+  {path: `user-page/:username/selling-page/old-items-list-page`, component: OldItemsList},
   {path: `user-page/:username/selling-page/create-auction`, component: createAuction},
   {path: `user-page/:username/selling-page/:id/start-auction`, component: startAuction},
   {path: `user-page/:username/selling-page/:id/update-item`, component: UpdateItem},

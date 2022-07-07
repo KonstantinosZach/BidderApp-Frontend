@@ -5,14 +5,15 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Items} from "../item";
 
 @Component( {
-  selector: `app-items-list-page`,
-  templateUrl: `./items.list.html`,
-  styleUrls: [`./items.list.css`]
+  selector: `app-old-items-list-page`,
+  templateUrl: `./old.items.list.html`,
+  styleUrls: [`./old.items.list.css`]
 })
 
-export class ItemsList implements  OnInit {
+export class OldItemsList implements  OnInit {
   username: String | undefined;
   public items: Items[] | undefined;
+  public activeItems: Items[] = [];
 
   constructor(private sellerService: SellerService, private router: ActivatedRoute, private navRouter: Router) {}
 
@@ -25,10 +26,6 @@ export class ItemsList implements  OnInit {
 
   }
 
-  startAuction(item:Items){
-    this.navRouter.navigate([`user-page`,this.username,`selling-page`,item.id,`start-auction`]);
-  }
-
   deleteItem(item: Items){
     this.sellerService.deleteItem(item.id).subscribe( data =>{
       console.log(data);
@@ -36,13 +33,15 @@ export class ItemsList implements  OnInit {
     })
   }
 
-  updateItem(item:Items){
-    this.navRouter.navigate([`user-page`,this.username,`selling-page`,item.id,`update-item`]);
-  }
-
   getSellerItems(){
     this.sellerService.getSellerItems(this.username).subscribe(data => {
       this.items = data;
+      this.activeItems = [];
+      let date = this.sellerService.convertCurrentDate();
+      this.items?.forEach( (element) => {
+        if(((date > element.ends) || (element.buyPrice <= element.currently)) && (element.ends != ""))
+          this.activeItems.push(element);
+      })
     });
   }
 }

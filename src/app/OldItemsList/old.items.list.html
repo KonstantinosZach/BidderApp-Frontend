@@ -6,7 +6,7 @@
   </ul>
 </nav>
 <body>
-<h2>Items List</h2>
+<h2>Older Items</h2>
 <table class = "table table-striped">
   <thead>
   <tr>
@@ -24,7 +24,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor = "let item of items">
+  <tr *ngFor = "let item of activeItems">
     <td> {{item.name}} </td>
     <td> {{item.category}} </td>
     <td> {{item.buyPrice}}</td>
@@ -41,16 +41,8 @@
       <button (click) = "seeBids()" class = "btn btn-info"> See Bids </button>
     </td>
 
-    <td *ngIf="item.started == ''">
-      <button (click) = "startAuction(item)" class = "btn btn-success"> Start Auction </button>
-    </td>
-
-    <td *ngIf="item.numberOfBids < 1">
+    <td>
       <button (click) = "deleteItem(item)" class = "btn btn-danger"> Delete Item </button>
-    </td>
-
-    <td *ngIf="item.numberOfBids < 1">
-      <button (click) = "updateItem(item)" class = "btn btn-warning"> Update Item </button>
     </td>
 
   </tr>
