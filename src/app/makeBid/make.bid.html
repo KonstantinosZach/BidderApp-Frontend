@@ -1,0 +1,63 @@
+<nav class = " navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class = "navbar-nav">
+    <li class = "nav-link">
+      <a routerLink = "../../" routerLinkActive = "active" class = "nav-link"> Back </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container" >
+  <h3> Item: {{item.name}} </h3>
+  <div>
+    <label> <b> Category: </b></label> {{item.category}}
+  </div><br>
+
+  <div>
+    <label> <b> Description: </b></label> {{item.description}}
+  </div><br>
+
+  <div>
+    <label> <b> Location: </b></label> {{item.location}}
+  </div><br>
+
+  <div>
+    <label> <b>Country: </b></label> {{item.country}}
+  </div><br>
+
+  <div>
+    <label> <b> Number of Bids: </b></label> {{item.numberOfBids}}
+  </div><br>
+
+  <div>
+    <label> <b> Start Date: </b> </label> {{item.started}}
+  </div><br>
+
+  <div>
+    <label> <b> Ends: </b></label> {{item.ends}}
+  </div><br>
+
+  <div>
+    <label> <b> Buy Price: </b></label> {{item.buyPrice}}
+  </div><br>
+
+  <div>
+    <label> <b> Currently: </b></label> {{item.currently}}
+  </div><br>
+
+  <div>
+    <label> <b> First Bid: </b></label> {{item.firstBid}}
+  </div><br>
+</div>
+
+<div>
+  <input type="number" min="{{item.currently}}" step="0.1" placeholder="{{item.currently}}"
+         [(ngModel)] = "offer" name = "name" >
+</div>
+
+<div class = "bid-button">
+  <td>
+    <button (click) = "makeOffer()" class = "btn btn-success"> Make Offer! </button>
+  </td>
+
+</div>
+<br>

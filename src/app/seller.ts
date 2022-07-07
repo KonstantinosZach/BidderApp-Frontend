@@ -3,7 +3,7 @@ import {Items} from "./item";
 
 export interface Seller {
   id: bigint;
-  rating: bigint;
+  rating: number;
   items: Items[];
   users: User;
 }

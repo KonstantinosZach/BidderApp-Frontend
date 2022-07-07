@@ -26,13 +26,6 @@ export class OldItemsList implements  OnInit {
 
   }
 
-  deleteItem(item: Items){
-    this.sellerService.deleteItem(item.id).subscribe( data =>{
-      console.log(data);
-      this.getSellerItems();
-    })
-  }
-
   getSellerItems(){
     this.sellerService.getSellerItems(this.username).subscribe(data => {
       this.items = data;

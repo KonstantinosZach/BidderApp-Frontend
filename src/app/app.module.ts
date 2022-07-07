@@ -22,6 +22,7 @@ import { startAuction } from "./startAuction/start.auction";
 import { UpdateItem } from "./updateItem/update.item";
 import { createBidder } from "./createBidder/create.bidder";
 import { bidderPage } from "./bidderPage/bidder.page";
+import { makeBid } from "./makeBid/make.bid";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { bidderPage } from "./bidderPage/bidder.page";
     startAuction,
     UpdateItem,
     createBidder,
-    bidderPage
+    bidderPage,
+    makeBid
   ],
   imports: [
     BrowserModule,

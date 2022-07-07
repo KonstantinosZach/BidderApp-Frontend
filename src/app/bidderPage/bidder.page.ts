@@ -22,8 +22,8 @@ export class bidderPage implements  OnInit {
     this.username = this.router.snapshot.params['username'];
   }
 
-  bid(){
-
+  bid(item: Items){
+    this.navRouter.navigate([`user-page`,this.username,`bidding-page`,item.id,`make-bid`]);
   }
 
   ngOnInit():void {
