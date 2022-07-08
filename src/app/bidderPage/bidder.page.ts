@@ -14,6 +14,7 @@ import {Items} from "../item";
 export class bidderPage implements  OnInit {
   username: String | undefined;
   bidder: Bidder = {} as Bidder;
+  categories: string[] | undefined;
   public items: Items[] | undefined;
   public activeItems: Items[] = [];
 
@@ -27,19 +28,31 @@ export class bidderPage implements  OnInit {
   }
 
   ngOnInit():void {
-    this.getActiveItems();
+    this.getActiveItems(undefined);
   }
 
-  getActiveItems(){
+  filter(){
+    this.getActiveItems(this.categories)
+  }
+
+  getActiveItems(categories: String[] | undefined){
+    this.activeItems = [];
+
     this.bidderService.getBidderItems(this.username).subscribe(data => {
       this.items = data;
-      console.log(this.items);
       let date = this.sellerService.convertCurrentDate();
-      this.items?.forEach( (element) =>
-      {
-        //date/price
+      this.items?.forEach( (element) => {
         if((date <= element.ends) && (element.buyPrice > element.currently)){
-          this.activeItems.push(element);
+          if(categories == undefined || categories.length == 0){
+            this.activeItems.push(element);
+          }
+          else{
+            this.categories?.forEach(category => {
+              if(!this.activeItems.includes(element) && element.category.includes(category)){
+                this.activeItems.push(element);
+              }
+            })
+          }
         }
       })
     });

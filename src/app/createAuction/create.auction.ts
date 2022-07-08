@@ -12,6 +12,7 @@ import {SellerService} from "../seller.service";
 export class createAuction implements  OnInit {
   item: Items = {} as Items;
   username: String | undefined;
+  categories: String[] | undefined;
 
   constructor(private sellerService: SellerService, private navRouter: Router, private router: ActivatedRoute) {}
 
@@ -21,12 +22,17 @@ export class createAuction implements  OnInit {
 
   saveItem(){
     this.item.currently = this.item.firstBid;
+    this.item.category = "";
+    this.categories?.forEach( category =>{
+      console.log(category);
+      this.item.category += " " + category;
+    })
     this.sellerService.addItem(this.username, this.item).subscribe({
       complete: () => {
         console.log(),
           this.navRouter.navigate([`user-page`,this.username,`selling-page`])
       },
-      error: () => {console.log(); alert("Wrong input... try again")}
+      error: () => {console.log(this.item); alert("Wrong input... try again")}
     })
   }
 
