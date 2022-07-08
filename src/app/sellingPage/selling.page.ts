@@ -21,8 +21,8 @@ export class SellingPage implements  OnInit {
     this.getSellerItems();
   }
 
-  seeBids(){
-
+  seeBids(item: Items){
+    this.navRouter.navigate([`user-page`,this.username,`bid-list`,item.id]);
   }
 
   startAuction(item:Items){

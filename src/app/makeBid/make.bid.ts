@@ -3,6 +3,8 @@ import {SellerService} from "../seller.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 import {Items} from "../item";
+import {Bids} from "../bid";
+import {BidderService} from "../bidder.service";
 
 @Component( {
   selector: `app-make-bid-page`,
@@ -12,35 +14,49 @@ import {Items} from "../item";
 
 export class makeBid implements  OnInit {
   username: String | undefined;
-  id: bigint | undefined;
+  id!: bigint;
   item: Items = {} as Items;
+  bid: Bids = {} as Bids;
   offer: number = 0;
 
-  constructor(private sellerService: SellerService, private router: ActivatedRoute, private navRouter: Router) {}
+  constructor(private sellerService: SellerService, private router: ActivatedRoute,
+              private navRouter: Router, private bidderService: BidderService) {}
 
   makeOffer(){
       if (confirm("Confirm the bid")){
         let date = this.sellerService.convertCurrentDate();
 
-        if(date > this.item.ends)
+        if((date > this.item.ends) || this.item.currently == this.item.buyPrice)
           alert("Auction is closed!");
         else if(this.item.numberOfBids > 0 && this.offer <= this.item.currently)
           alert("bigger offer need!");
         else if(this.item.numberOfBids == 0 && this.offer < this.item.currently)
           alert("bigger offer need!");
         else{
-          //---item----
-          //equals to buy price
-          //update currently
-          //update number of bids
+          if(this.offer >= this.item.buyPrice){
+            this.offer = this.item.buyPrice;
+            this.item.ends = this.sellerService.convertCurrentDate();
+          }
+          this.item.currently = this.offer;
+          this.item.numberOfBids = this.item.numberOfBids + 1;
 
-          //---bid----
-          //make the bid
+          this.sellerService.updateSellingItem(this.id, this.item).subscribe(data =>{
+              console.log(data);
+              this.sellerService.getItemById(this.id).subscribe(data =>{
+                this.item = data;
+              })
+              this.bid.time = date;
+              this.bid.amount = this.offer;
+              this.bidderService.addBid(this.username, this.id, this.bid).subscribe({
+                error: () => {console.log(); alert("error with the bid")}
+              })
+            },
+            error => console.log(error));
         }
 
       }
       else{
-
+            //Do nothing
       }
   }
 

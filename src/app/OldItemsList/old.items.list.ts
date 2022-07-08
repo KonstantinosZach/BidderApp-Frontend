@@ -22,8 +22,8 @@ export class OldItemsList implements  OnInit {
     this.getSellerItems();
   }
 
-  seeBids(){
-
+  seeBids(item: Items){
+    this.navRouter.navigate([`user-page`,this.username,`bid-list`,item.id]);
   }
 
   getSellerItems(){

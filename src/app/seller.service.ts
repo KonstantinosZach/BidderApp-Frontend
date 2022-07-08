@@ -5,6 +5,7 @@ import { environment } from "../environments/environment";
 import {Seller} from "./seller";
 import {Items} from "./item";
 import {User} from "./user";
+import {Bids} from "./bid";
 
 //same as manually in providers
 @Injectable({
@@ -72,4 +73,13 @@ export class SellerService {
   public updateItem(id: bigint | undefined, item: Items): Observable<Items> {
     return this.http.put<Items>(`${this.apiServerUrl}/item/update/${id}`, item);
   }
+
+  public updateSellingItem(id: bigint | undefined, item: Items): Observable<Items> {
+    return this.http.put<Items>(`${this.apiServerUrl}/item/update/selling-item/${id}`, item);
+  }
+
+  public getAllItemsBids(id: bigint | undefined): Observable<Bids[]> {
+    return this.http.get<Bids[]>(`${this.apiServerUrl}/bid/find/item-bids/${id}`);
+  }
+
 }

@@ -23,6 +23,7 @@ import { UpdateItem } from "./updateItem/update.item";
 import { createBidder } from "./createBidder/create.bidder";
 import { bidderPage } from "./bidderPage/bidder.page";
 import { makeBid } from "./makeBid/make.bid";
+import { BidList } from "./bidList/bid.list";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { makeBid } from "./makeBid/make.bid";
     UpdateItem,
     createBidder,
     bidderPage,
-    makeBid
+    makeBid,
+    BidList
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,8 @@ import {Seller} from "./seller";
 import {Bidder} from "./bidder";
 import {HttpClient} from "@angular/common/http";
 import {Items} from "./item";
+import {Bids} from "./bid";
+import {User} from "./user";
 
 //same as manually in providers
 @Injectable({
@@ -27,4 +29,11 @@ export class BidderService {
     return this.http.get<Items[]>(`${this.apiServerUrl}/item/find-bidder-items/${username}`);
   }
 
+  public addBid(username: String | undefined, id: bigint, bid: Bids): Observable<Bids> {
+    return this.http.post<Bids>(`${this.apiServerUrl}/bid/add/${username}/${id}`, bid);
+  }
+
+  public getUserByBidId(id: bigint): Observable<User> {
+    return this.http.get<User>(`${this.apiServerUrl}/bid/find-user/${id}`);
+  }
 }
