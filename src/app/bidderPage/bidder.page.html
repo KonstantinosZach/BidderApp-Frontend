@@ -6,65 +6,95 @@
   </ul>
 </nav>
 
-<body>
-<br>
-<h2>Auction List</h2>
-<div class = "form-group">
-  <label class="category"> Search By Category </label>
-  <br>
-  <select class = "dropdown" [(ngModel)] = "categories" name="Category" id="Category" multiple>
-    <option value="Clothes">Clothes</option>
-    <option value="Toys">Toys</option>
-    <option value="Kitchen">Kitchen</option>
-    <option value="Garden">Garden</option>
-    <option value="Electronics">Electronics</option>
-    <option value="Cars">Cars</option>
-    <option value="Music">Music</option>
-    <option value="Sports">Sports</option>
-  </select>
-  <td>
-    <br>
-    <button (click) = "filter()" class = "btn btn-warning"> Filter Auctions </button>
-  </td>
+<div class="row">
+  <div class="col-sm">
+    <h4> Search By Category </h4>
+    <select class = "dropdown" [(ngModel)] = "categories" name="Category" id="Category" multiple>
+      <option value="Clothes">Clothes</option>
+      <option value="Toys">Toys</option>
+      <option value="Kitchen">Kitchen</option>
+      <option value="Garden">Garden</option>
+      <option value="Electronics">Electronics</option>
+      <option value="Cars">Cars</option>
+      <option value="Music">Music</option>
+      <option value="Sports">Sports</option>
+    </select>
+  </div>
+
+  <div class="col-sm">
+    <h4> Search By Price </h4>
+        <input class = "price" type="number" min="0" step="5" placeholder="0"
+               [(ngModel)] = "price" name = "name" >
+  </div>
+
+  <div class="col-sm">
+    <h4> Search By Location </h4>
+    <input class = "location" type="search" placeholder="Athens"
+           [(ngModel)] = "location" name = "name" >
+  </div>
+
+  <div class="col-sm">
+    <h4> Search By Description </h4>
+    <input class = "description" type="search" placeholder="laptop, accessories"
+           [(ngModel)] = "description" name = "name" >
+  </div>
+
 </div>
 
-<table class = "table table-striped">
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Category</th>
-    <th>Buy Price</th>
-    <th>Currently</th>
-    <th>First Bid</th>
-    <th>Number of bids</th>
-    <th>location</th>
-    <th>Country</th>
-    <th>Started</th>
-    <th>Ends</th>
-    <th>Description</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor = "let item of activeItems">
-    <td> {{item.name}} </td>
-    <td> {{item.category}} </td>
-    <td> {{item.buyPrice}}</td>
-    <td> {{item.currently}}</td>
-    <td> {{item.firstBid}} </td>
-    <td> {{item.numberOfBids}} </td>
-    <td> {{item.location}} </td>
-    <td> {{item.country}} </td>
-    <td> {{item.started}} </td>
-    <td> {{item.ends}} </td>
-    <td> {{item.description}} </td>
+<div class="row">
 
-    <td>
-      <button (click) = "bid(item)" class = "btn btn-success"> Go Bid </button>
-    </td>
+  <div class="col-sm-1">
+    <div class="filter-button">
+      <td>
+        <button (click) = "filter()" class = "btn btn-warning"> Filter Auctions </button>
+      </td>
+    </div>
+  </div>
 
-  </tr>
-  </tbody>
-</table>
-<br>
-<br>
-</body>
+  <div class="col-sm-1">
+    <div class="clear-button">
+      <td>
+        <button (click) = "clearFilters()" class = "btn btn-danger"> Clear filters </button>
+      </td>
+    </div>
+  </div>
+</div>
+
+<h2>Auction List</h2>
+<div class = "form-group">
+  <table class = "table table-striped">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Buy Price</th>
+      <th>Currently</th>
+      <th>First Bid</th>
+      <th>Number of bids</th>
+      <th>location</th>
+      <th>Country</th>
+      <th>Started</th>
+      <th>Ends</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let item of activeItems">
+        <td> {{item.name}} </td>
+        <td> {{item.category}} </td>
+        <td> {{item.buyPrice}}</td>
+        <td> {{item.currently}}</td>
+        <td> {{item.firstBid}} </td>
+        <td> {{item.numberOfBids}} </td>
+        <td> {{item.location}} </td>
+        <td> {{item.country}} </td>
+        <td> {{item.started}} </td>
+        <td> {{item.ends}} </td>
+        <td> {{item.description}} </td>
+        <td>
+          <button (click) = "bid(item)" class = "btn btn-success"> Go Bid </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

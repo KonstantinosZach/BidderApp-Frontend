@@ -5,12 +5,19 @@ h2{
   font-size: xx-large;
 }
 
+col-sm{
+  position: absolute;
+}
+
+.form-group{
+  margin-top: 50px;
+}
+
 .dropdown{
   width: 200px;
   height: 100px;
   text-align: center;
 }
-
 
 select {
   margin-bottom: 10px;
@@ -21,17 +28,19 @@ select {
   padding: 10px;
   border-radius: 5px;
 }
-.category{
-  width: 200px;
-  text-align: center;
-  font-size: larger;
+
+.price{
+  margin-top: 10px;
 }
 
-.btn-warning{
-  margin: 0;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+.location{
+  margin-top: 10px;
+}
+
+.description{
+  margin-top: 10px;
+}
+
+.clear-button{
+  height: 20px;
 }
