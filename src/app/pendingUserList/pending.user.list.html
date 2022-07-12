@@ -37,7 +37,6 @@
     <td *ngIf="!user.accepted"> {{user.accepted}}</td>
     <td *ngIf="!user.accepted">
       <button (click) = "deleteUser(user.username)" class = "btn btn-danger" style="margin-left: 5px"> Delete </button>
-      <button (click) = "detailUser(user.username)" class = "btn btn-info" style="margin-left: 5px"> Details </button>
       <button (click) = "acceptUser(user.username)" class = "btn btn-success" style="margin-left: 5px"> Accept </button>
     </td>
   </tr>

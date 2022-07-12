@@ -11,6 +11,7 @@ import {SellerService} from "../seller.service";
 
 export class createAuction implements  OnInit {
   item: Items = {} as Items;
+  check: Boolean | undefined;
   username: String | undefined;
   categories: String[] | undefined;
 
@@ -20,16 +21,29 @@ export class createAuction implements  OnInit {
     this.username = this.router.snapshot.params['username'];
   }
 
-  saveItem(){
+  completeItem(){
     this.item.currently = this.item.firstBid;
     this.item.category = "";
     this.categories?.forEach( category =>{
       console.log(category);
       this.item.category += " " + category;
     })
+    if(this.check){
+      navigator.geolocation.getCurrentPosition((position => {
+        this.item.latitude = JSON.stringify(position.coords.latitude);
+        this.item.longitude = JSON.stringify(position.coords.longitude);
+        this.saveItem();
+      }))
+    }
+    else{
+      this.saveItem();
+    }
+  }
+
+  saveItem(){
     this.sellerService.addItem(this.username, this.item).subscribe({
       complete: () => {
-        console.log(),
+        console.log(this.item),
           this.navRouter.navigate([`user-page`,this.username,`selling-page`])
       },
       error: () => {console.log(this.item); alert("Wrong input... try again")}
@@ -38,7 +52,7 @@ export class createAuction implements  OnInit {
 
   onSubmit(){
     console.log(this.item);
-    this.saveItem();
+    this.completeItem();
   }
 
 }

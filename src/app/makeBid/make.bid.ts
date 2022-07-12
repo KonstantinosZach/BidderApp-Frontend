@@ -1,6 +1,7 @@
 import { Component, OnInit} from "@angular/core";
 import {SellerService} from "../seller.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import * as L from "leaflet";
 
 import {Items} from "../item";
 import {Bids} from "../bid";
@@ -18,10 +19,10 @@ export class makeBid implements  OnInit {
   item: Items = {} as Items;
   bid: Bids = {} as Bids;
   offer: number = 0;
+  map: L.Map | undefined;
 
   constructor(private sellerService: SellerService, private router: ActivatedRoute,
               private navRouter: Router, private bidderService: BidderService) {}
-
   makeOffer(){
       if (confirm("Confirm the bid")){
         let date = this.sellerService.convertCurrentDate();
@@ -65,6 +66,16 @@ export class makeBid implements  OnInit {
     this.id = this.router.snapshot.params['id'];
     this.sellerService.getItemById(this.id).subscribe(data =>{
       this.item = data;
+      console.log(data);
+      setTimeout(() => {
+        if(this.item.latitude != undefined && this.item.longitude != undefined) {
+          let map = L.map("map").setView([Number(this.item.latitude), Number(this.item.longitude)], 13);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+          }).addTo(map);
+        }
+      }, 100);
     })
 
   }

@@ -33,9 +33,10 @@ export class PendingUserList implements  OnInit {
     })
   }
 
-  detailUser(username: String){
-    this.router.navigate([`user-detail`,username]);
-  }
+  // detailUser(username: String){
+  //   //this.router.navigate([`user-detail`,username]);
+  //   this.router.navigate([`user-page`, username, `user-detail`]);
+  // }
 
   deleteUser(username: String){
     this.userService.deleteUser(username).subscribe( data =>{

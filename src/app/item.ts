@@ -12,6 +12,8 @@ export interface Items {
   bids: Bids[],
   //bids: [],
   location: string,
+  latitude: string,
+  longitude: string,
   country: string,
   started: string,
   ends: string,

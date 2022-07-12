@@ -26,7 +26,7 @@ export class startAuction implements  OnInit {
       this.items.started = this.sellerService.convertCurrentDate();
       this.items.ends = this.dateEnds + " " + this.hourEnds;
 
-      if(this.items.started >= this.items.ends)
+      if(this.items.started >= this.items.ends || this.dateEnds == undefined || this.hourEnds == undefined)
         alert("wrong date");
       else {
         this.sellerService.updateItem(this.id, this.items).subscribe(data =>{

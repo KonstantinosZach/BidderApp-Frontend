@@ -15,6 +15,9 @@ export class bidderPage implements  OnInit {
   username: String | undefined;
   bidder: Bidder = {} as Bidder;
   categories: string[] | undefined;
+  price: number |undefined;
+  location: string | undefined;
+  description: string | undefined;
   public items: Items[] | undefined;
   public activeItems: Items[] = [];
 
@@ -28,14 +31,35 @@ export class bidderPage implements  OnInit {
   }
 
   ngOnInit():void {
-    this.getActiveItems(undefined);
+    this.getActiveItems();
   }
 
   filter(){
-    this.getActiveItems(this.categories)
+    this.getActiveItems()
   }
 
-  getActiveItems(categories: String[] | undefined){
+  clearFilters(){
+    this.categories = [];
+    this.price = undefined;
+    this.location = "";
+    this.description = "";
+    this.getActiveItems()
+  }
+
+  checkCategories(element: Items){
+    if (this.categories == undefined || this.categories.length == 0) {
+      this.activeItems.push(element);
+    }
+    else {
+      this.categories?.forEach(category => {
+        if (!this.activeItems.includes(element) && element.category.includes(category)) {
+          this.activeItems.push(element);
+        }
+      })
+    }
+  }
+
+  getActiveItems(){
     this.activeItems = [];
 
     this.bidderService.getBidderItems(this.username).subscribe(data => {
@@ -43,19 +67,29 @@ export class bidderPage implements  OnInit {
       let date = this.sellerService.convertCurrentDate();
       this.items?.forEach( (element) => {
         if((date <= element.ends) && (element.buyPrice > element.currently)){
-          if(categories == undefined || categories.length == 0){
+          if(this.price == undefined && (this.categories == undefined || this.categories.length == 0)
+          && this.location == undefined && this.description == undefined){
             this.activeItems.push(element);
           }
           else{
-            this.categories?.forEach(category => {
-              if(!this.activeItems.includes(element) && element.category.includes(category)){
-                this.activeItems.push(element);
+            if(this.price == undefined || this.price >= element.buyPrice) {
+              if(this.location == undefined || this.location == "" || this.location == element.location) {
+                if(this.description == undefined || this.description == "" ) {
+                  this.checkCategories(element);
+                }
+                else{
+                  let words = this.description.split(" ");
+                  words.forEach(word=> {
+                    if(!this.activeItems.includes(element) && element.description.includes(word)) {
+                      this.checkCategories(element);
+                    }
+                  })
+                }
               }
-            })
+            }
           }
         }
       })
     });
   }
-
 }

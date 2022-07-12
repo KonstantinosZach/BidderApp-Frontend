@@ -14,3 +14,13 @@ select {
   padding: 10px;
   border-radius: 5px;
 }
+
+.location-label{
+  margin-right: 5px;
+}
+
+.checkbox{
+  margin-left: 5px;
+  height: 15px;
+  width: 15px;
+}

@@ -33,7 +33,10 @@ export class UserList implements  OnInit {
     this.userService.deleteUser(username).subscribe( data =>{
       console.log(data);
       this.getUsers();
-    })
+    },
+      error => {
+      alert("User is already selling or bidding!\nCan't be deleted now!")
+      })
   }
 }
 
