@@ -66,13 +66,13 @@ export class bidderPage implements  OnInit {
       this.items = data;
       let date = this.sellerService.convertCurrentDate();
       this.items?.forEach( (element) => {
-        if((date <= element.ends) && (element.buyPrice > element.currently)){
+        if((date <= element.ends) && (element.buyPrice == null || element.buyPrice > element.currently)){
           if(this.price == undefined && (this.categories == undefined || this.categories.length == 0)
           && this.location == undefined && this.description == undefined){
             this.activeItems.push(element);
           }
           else{
-            if(this.price == undefined || this.price >= element.buyPrice) {
+            if(this.price == undefined || element.buyPrice == null || this.price >= element.buyPrice) {
               if(this.location == undefined || this.location == "" || this.location == element.location) {
                 if(this.description == undefined || this.description == "" ) {
                   this.checkCategories(element);

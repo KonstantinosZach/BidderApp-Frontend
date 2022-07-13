@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import { HttpClient } from '@angular/common/http';
 import {Items} from "../item";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SellerService} from "../seller.service";
@@ -28,6 +29,10 @@ export class createAuction implements  OnInit {
       console.log(category);
       this.item.category += " " + category;
     })
+
+    if(this.item.buyPrice == undefined)
+      this.item.buyPrice = Number.NaN;
+
     if(this.check){
       navigator.geolocation.getCurrentPosition((position => {
         this.item.latitude = JSON.stringify(position.coords.latitude);

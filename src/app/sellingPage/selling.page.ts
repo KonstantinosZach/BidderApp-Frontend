@@ -45,7 +45,7 @@ export class SellingPage implements  OnInit {
       this.activeItems = [];
       let date = this.sellerService.convertCurrentDate();
       this.items?.forEach( (element) => {
-        if(((date <= element.ends) && (element.buyPrice > element.currently)) || element.ends == "")
+        if(((date <= element.ends) && (element.buyPrice == null || element.buyPrice > element.currently)) || element.ends == "")
           this.activeItems.push(element);
       })
     });

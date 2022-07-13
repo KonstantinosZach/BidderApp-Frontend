@@ -27,14 +27,14 @@ export class makeBid implements  OnInit {
       if (confirm("Confirm the bid")){
         let date = this.sellerService.convertCurrentDate();
 
-        if((date > this.item.ends) || this.item.currently == this.item.buyPrice)
+        if((date > this.item.ends) || (this.item.buyPrice != null && this.item.currently == this.item.buyPrice))
           alert("Auction is closed!");
         else if(this.item.numberOfBids > 0 && this.offer <= this.item.currently)
           alert("bigger offer need!");
         else if(this.item.numberOfBids == 0 && this.offer < this.item.currently)
           alert("bigger offer need!");
         else{
-          if(this.offer >= this.item.buyPrice){
+          if(this.item.buyPrice != null && this.offer >= this.item.buyPrice){
             this.offer = this.item.buyPrice;
             this.item.ends = this.sellerService.convertCurrentDate();
           }
