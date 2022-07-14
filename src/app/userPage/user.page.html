@@ -32,4 +32,11 @@
       <button (click) = "goBid()" class = "btn btn-info"> Go Bid </button>
     </td>
   </div>
+
+  <div class="struct">
+    <td *ngIf="!bidderValid" >
+      <button (click) = "goAsGuest()" class = "btn btn-success"> Go as Guest! </button>
+    </td>
+  </div>
+
 </div>

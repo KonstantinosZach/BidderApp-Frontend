@@ -4,6 +4,7 @@ import {SellerService} from "../seller.service";
 import {Bidder} from "../bidder";
 import {BidderService} from "../bidder.service";
 import {Items} from "../item";
+import {UserService} from "../user.service";
 
 @Component( {
   selector: `app-bidder-page`,
@@ -20,8 +21,9 @@ export class bidderPage implements  OnInit {
   description: string | undefined;
   public items: Items[] | undefined;
   public activeItems: Items[] = [];
+  bidderValid = false;
 
-  constructor(private bidderService: BidderService, private navRouter: Router,
+  constructor(private userService: UserService, private bidderService: BidderService, private navRouter: Router,
               private router: ActivatedRoute, private sellerService: SellerService) {
     this.username = this.router.snapshot.params['username'];
   }
@@ -31,7 +33,19 @@ export class bidderPage implements  OnInit {
   }
 
   ngOnInit():void {
+    this.isBidder();
     this.getActiveItems();
+  }
+
+  isBidder(){
+    this.bidderService.getBidderByUsername(this.username).subscribe( result => {
+      if (result) {
+        console.log(result);
+        this.bidderValid = true;
+      } else {
+        this.bidderValid = false;
+      }
+    })
   }
 
   filter(){

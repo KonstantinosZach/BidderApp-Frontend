@@ -11,3 +11,17 @@
     </li>
   </ul>
 </nav>
+
+<div class="export-button">
+  <td>
+    <button *ngIf="downloadJsonHref == undefined" (click) = "getAllItemsJSON()" class = "btn btn-success"> Load JSON </button>
+  </td>
+  <a *ngIf="downloadJsonHref != undefined" class="btn btn-dark" [href]="downloadJsonHref" download="download-json.json"> Export JSON </a>
+</div>
+
+<div class="export-button">
+  <td>
+    <button *ngIf="downloadXMLHref == undefined" (click) = "getAllItemsXML()" class = "btn btn-success"> Load XML </button>
+  </td>
+  <a *ngIf="downloadXMLHref != undefined" class="btn btn-dark" [href]="downloadXMLHref" download="download-xml.xml"> Export XML </a>
+</div>

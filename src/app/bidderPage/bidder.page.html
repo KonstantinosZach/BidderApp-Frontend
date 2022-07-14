@@ -92,7 +92,7 @@
         <td> {{item.ends}} </td>
         <td> {{item.description}} </td>
         <td>
-          <button (click) = "bid(item)" class = "btn btn-success"> Go Bid </button>
+          <button *ngIf="bidderValid" (click) = "bid(item)" class = "btn btn-success"> Go Bid </button>
         </td>
       </tr>
     </tbody>

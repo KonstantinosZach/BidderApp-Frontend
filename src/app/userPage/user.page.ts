@@ -54,6 +54,10 @@ export class userPage implements  OnInit {
     this.navRouter.navigate([`user-page`,this.username,`bidding-page`]);
   }
 
+  goAsGuest(){
+    this.navRouter.navigate([`user-page`,this.username,`bidding-page`]);
+  }
+
   createSeller(){
     this.sellerService.addSeller(this.username).subscribe( data =>{
       console.log(data);
