@@ -1,0 +1,49 @@
+<nav class = " navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class = "navbar-nav">
+    <li class = "nav-link">
+      <a routerLink = "../../{{username}}/bidding-page" routerLinkActive = "active" class = "nav-link"> Back </a>
+    </li>
+  </ul>
+</nav>
+
+<body>
+<h2>Winnings</h2><br>
+<table class = "table table-hover">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Buy Price</th>
+    <th>First Bid</th>
+    <th>Currently</th>
+    <th>Number of bids</th>
+    <th>location</th>
+    <th>Country</th>
+    <th>Started</th>
+    <th>Ends</th>
+    <th>Description</th>
+    <th>Get in touch</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor = "let item of oldItems">
+    <td> {{item.name}} </td>
+    <td> {{item.category}} </td>
+    <td> {{item.buyPrice}}</td>
+    <td> {{item.currently}}</td>
+    <td> {{item.firstBid}} </td>
+    <td> {{item.numberOfBids}} </td>
+    <td> {{item.location}} </td>
+    <td> {{item.country}} </td>
+    <td> {{item.started}} </td>
+    <td> {{item.ends}} </td>
+    <td> {{item.description}} </td>
+    <td>
+      <button (click) = "goToMessages()" class = "btn btn-success"> Send Message </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<br>
+<br>
+</body>

@@ -54,7 +54,6 @@ export class makeBid implements  OnInit {
             },
             error => console.log(error));
         }
-
       }
       else{
             //Do nothing

@@ -17,6 +17,7 @@
     <th>Username</th>
     <th>Amount</th>
     <th>Date</th>
+    <th>Get in touch</th>
   </tr>
   </thead>
   <tbody>
@@ -24,7 +25,7 @@
     <td> {{map?.get(bid.id)}} </td>
     <td> {{bid.amount}} </td>
     <td> {{bid.time}} </td>
-
+    <td *ngIf="buyer?.get(bid.id)"><button (click) = "goToMessages()" class = "btn btn-success"> Send Message </button> </td>
   </tr>
   </tbody>
 </table>

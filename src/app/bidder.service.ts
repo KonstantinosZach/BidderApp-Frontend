@@ -36,4 +36,8 @@ export class BidderService {
   public getUserByBidId(id: bigint): Observable<User> {
     return this.http.get<User>(`${this.apiServerUrl}/bid/find-user/${id}`);
   }
+
+  public getBiddingItems(username: String | undefined): Observable<Items[]> {
+    return this.http.get<Items[]>(`${this.apiServerUrl}/bidder/find-items/${username}`);
+  }
 }

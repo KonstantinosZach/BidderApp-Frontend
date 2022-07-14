@@ -24,6 +24,7 @@ import { createBidder } from "./createBidder/create.bidder";
 import { bidderPage } from "./bidderPage/bidder.page";
 import { makeBid } from "./makeBid/make.bid";
 import { BidList } from "./bidList/bid.list";
+import { wonAuctions } from "./wonAuctions/won.auctions";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { BidList } from "./bidList/bid.list";
     createBidder,
     bidderPage,
     makeBid,
-    BidList
+    BidList,
+    wonAuctions
   ],
   imports: [
     BrowserModule,

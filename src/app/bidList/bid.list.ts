@@ -17,11 +17,17 @@ export class BidList implements  OnInit {
   item: Items | undefined;
   bids: Bids[] | undefined;
   map = new Map<bigint, string>();
+  status = true;
+  buyer = new Map<bigint, boolean>();
 
   constructor(private sellerService: SellerService, private router: ActivatedRoute,
               private navRouter: Router, private bidderService: BidderService) {
     this.username = this.router.snapshot.params['username'];
     this.id = this.router.snapshot.params['id'];
+  }
+
+  goToMessages(){
+
   }
 
   ngOnInit(): void {
@@ -30,6 +36,8 @@ export class BidList implements  OnInit {
       this.sellerService.getAllItemsBids(this.item.id).subscribe(data => {
         this.bids = data;
         this.bids?.forEach( (element) => {
+          this.buyer.set(element.id, this.status);
+          this.status = false;
           this.bidderService.getUserByBidId(element.id).subscribe( data => {
             this.map.set(element.id, data.username);
           })
