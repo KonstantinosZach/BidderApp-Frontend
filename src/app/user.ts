@@ -1,3 +1,5 @@
+import {Message} from "./message";
+
 export interface User {
   username: string;
   password: string;
@@ -11,4 +13,6 @@ export interface User {
   imageUrl: string;
   admin: boolean;
   accepted: boolean;
+  sent: Message[],
+  received: Message[]
 }

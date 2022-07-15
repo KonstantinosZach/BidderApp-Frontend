@@ -19,6 +19,7 @@ export class BidList implements  OnInit {
   map = new Map<bigint, string>();
   status = true;
   buyer = new Map<bigint, boolean>();
+  buttonAvailable = false;
 
   constructor(private sellerService: SellerService, private router: ActivatedRoute,
               private navRouter: Router, private bidderService: BidderService) {
@@ -27,16 +28,23 @@ export class BidList implements  OnInit {
   }
 
   goToMessages(){
-
+    let iterator = this.map.entries();
+    let firstIteration = iterator.next();
+    let winner = firstIteration.value;
+    this.navRouter.navigate([`user-page`,this.username,`start-message`,winner[1]]);
   }
 
   ngOnInit(): void {
     this.sellerService.getItemById(this.id).subscribe( data => {
       this.item = data;
+
+      if(this.item.ends < this.sellerService.convertCurrentDate())
+        this.buttonAvailable = true;
+
       this.sellerService.getAllItemsBids(this.item.id).subscribe(data => {
         this.bids = data;
         this.bids?.forEach( (element) => {
-          this.buyer.set(element.id, this.status);
+          this.buyer.set(element.id, this.status && this.buttonAvailable);
           this.status = false;
           this.bidderService.getUserByBidId(element.id).subscribe( data => {
             this.map.set(element.id, data.username);

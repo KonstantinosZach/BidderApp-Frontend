@@ -1,0 +1,33 @@
+<nav class = " navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class = "navbar-nav">
+    <li class = "nav-link">
+      <a routerLink = "../../../user-page/{{username}}" routerLinkActive = "active" class = "nav-link"> Back </a>
+    </li>
+  </ul>
+</nav>
+
+<body>
+<h2>Received messages from other users</h2><br>
+<table class = "table table-hover">
+  <thead>
+  <tr>
+    <th>Sender</th>
+    <th>Theme</th>
+    <th>Date</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor = "let message of messages">
+    <td [ngStyle]="{'font-weight':message.read ? 'lighter' : 'bolder'}"> {{map?.get(message.id)}} </td>
+    <td [ngStyle]="{'font-weight':message.read ? 'lighter' : 'bolder'}"> {{message.theme}} </td>
+    <td [ngStyle]="{'font-weight':message.read ? 'lighter' : 'bolder'}"> {{message.date}} </td>
+    <td>
+      <button (click) = "deleteMessage(message.id)" class = "btn btn-danger" style="margin-left: 5px"> Delete </button>
+      <button (click) = "details(message.id)" class = "btn btn-success" style="margin-left: 5px"> Details </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<br>
+<br>

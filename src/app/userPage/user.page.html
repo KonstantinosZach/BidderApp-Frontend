@@ -6,6 +6,11 @@
     <li class = "nav-link">
       <a routerLink = "../{{username}}/user-detail/" routerLinkActive = "active" class = "nav-link"> User Details </a>
     </li>
+    <li class = "nav-link">
+      <a routerLink = "../{{username}}/message-list/" routerLinkActive = "active" class = "nav-link"> Messages
+        <span *ngIf="newMessages" class="badge">!</span>
+      </a>
+    </li>
   </ul>
 </nav>
 

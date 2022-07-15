@@ -78,6 +78,10 @@ export class SellerService {
     return this.http.put<Items>(`${this.apiServerUrl}/item/update/selling-item/${id}`, item);
   }
 
+  public getUserByItemId(id: bigint | undefined): Observable<User>{
+    return this.http.get<User>(`${this.apiServerUrl}/item/find-seller-from-item/${id}`);
+  }
+
   public getAllItemsBids(id: bigint | undefined): Observable<Bids[]> {
     return this.http.get<Bids[]>(`${this.apiServerUrl}/bid/find/item-bids/${id}`);
   }

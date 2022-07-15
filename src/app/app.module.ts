@@ -25,6 +25,9 @@ import { bidderPage } from "./bidderPage/bidder.page";
 import { makeBid } from "./makeBid/make.bid";
 import { BidList } from "./bidList/bid.list";
 import { wonAuctions } from "./wonAuctions/won.auctions";
+import { messageList } from "./messageList/message.list";
+import { MessageDetails } from "./messageDetails/message.details";
+import { startMessage } from "./startMessage/start.message";
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { wonAuctions } from "./wonAuctions/won.auctions";
     bidderPage,
     makeBid,
     BidList,
-    wonAuctions
+    wonAuctions,
+    messageList,
+    MessageDetails,
+    startMessage
   ],
   imports: [
     BrowserModule,

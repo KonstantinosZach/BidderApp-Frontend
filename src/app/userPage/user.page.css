@@ -19,3 +19,8 @@ col-sm{
   font-size: 25px;
   color: whitesmoke;
 }
+
+.badge {
+  background: red;
+  color: white;
+}

@@ -26,8 +26,12 @@ export class wonAuctions implements  OnInit {
     this.getOldItems();
   }
 
-  goToMessages(){
-    
+  goToMessages(item:Items){
+    let seller;
+    this.sellerService.getUserByItemId(item.id).subscribe(data =>{
+      seller = data.username;
+      this.navRouter.navigate([`user-page`,this.username,`start-message`,seller]);
+    });
   }
 
   getOldItems(){
