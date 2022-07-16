@@ -8,6 +8,25 @@
 
 <body>
 <h2>Sent messages to other users</h2><br>
+
+<div class="col-sm">
+  <h4> Search By Username </h4>
+  <input class = "search" type="search"
+         [(ngModel)] = "search" name = "search" >
+</div>
+
+<div class="col-sm">
+  <td>
+    <button (click) = "filter()" class = "btn btn-warning"> Filter Usernames </button>
+  </td>
+</div>
+
+<div class="col-sm">
+  <td>
+    <button (click) = "clear()" class = "btn btn-danger"> Clear Filter </button>
+  </td>
+</div>
+
 <table class = "table table-hover">
   <thead>
   <tr>

@@ -15,6 +15,7 @@ export class messageList implements  OnInit {
   username: String | undefined;
   messages: Message[] | undefined;
   map = new Map<bigint, string>();
+  search: String | undefined;
 
   constructor(private sellerService: SellerService, private router: ActivatedRoute,
               private messageService: MessageService, private navRouter: Router, private bidderService: BidderService) {}
@@ -32,6 +33,24 @@ export class messageList implements  OnInit {
 
   details(id:bigint){
     this.navRouter.navigate([`user-page`,this.username,`message-details`,id]);
+  }
+
+  filter(){
+    this.messages = [];
+    this.messageService.getAllReceivedMessages(this.username).subscribe(data =>{
+      data.forEach(element => {
+        this.messageService.getSenderByMessageId(element.id).subscribe(data =>{
+          if(data.username == this.search){
+            this.messages?.push(element);
+            this.map.set(element.id, data.username);
+          }
+        })
+      })
+    })
+  }
+
+  clear(){
+    this.getReceivedMessages();
   }
 
   getReceivedMessages(){
