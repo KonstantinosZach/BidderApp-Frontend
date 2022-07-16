@@ -5,6 +5,7 @@ import {BidderService} from "../bidder.service";
 import {mergeMap, timer} from "rxjs";
 import {Message} from "@angular/compiler/src/i18n/i18n_ast";
 import {MessageService} from "../message.service";
+import {colors} from "@angular/cli/utilities/color";
 
 @Component( {
   selector: `user-page`,
@@ -17,6 +18,7 @@ export class userPage implements  OnInit {
   sellerValid = false;
   bidderValid = false;
   newMessages = false;
+  timerId: any;
 
   constructor(private sellerService: SellerService, private router: ActivatedRoute, private messageService: MessageService,
               private navRouter: Router, private  bidderService: BidderService) {}
@@ -26,6 +28,11 @@ export class userPage implements  OnInit {
     this.isSeller();
     this.isBidder();
     this.getReceivedMessages();
+    this.timerId = setInterval(() => this.getReceivedMessages(), 7200);
+  }
+
+  ngOnDestroy():void{
+    clearInterval(this.timerId);
   }
 
   isSeller(){
