@@ -23,6 +23,7 @@ import {wonAuctions} from "./wonAuctions/won.auctions";
 import {messageList} from "./messageList/message.list";
 import {MessageDetails} from "./messageDetails/message.details";
 import {startMessage} from "./startMessage/start.message";
+import {sentMessages} from "./sentMessages/sent.messages";
 
 
 const routes: Routes = [
@@ -49,6 +50,7 @@ const routes: Routes = [
   {path: `user-page/:username/winnings-page`, component: wonAuctions},
   {path: `user-page/:username/message-list`, component: messageList},
   {path: `user-page/:username/message-details/:id`, component: MessageDetails},
+  {path: `user-page/:username/sent-messages`, component: sentMessages},
   {path: `user-page/:username1/start-message/:username2`, component: startMessage},
 ];
 

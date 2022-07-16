@@ -1,0 +1,27 @@
+<nav class = " navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class = "navbar-nav">
+    <li class = "nav-link">
+      <a routerLink = "../../../{{sender}}" routerLinkActive = "active" class = "nav-link"> Go to User Page </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="col-sm">
+  <div class="struct">
+    <h2>Send to {{receiver}} the following message:</h2>
+  </div>
+
+  <div class="struct">
+    <textarea class="theme" cols="40" rows="5" placeholder="Write message theme here"
+              [(ngModel)] = "theme" name = "theme" ></textarea>
+  </div>
+
+  <div class="inner-struct">
+    <textarea class="message" cols="40" rows="5" placeholder="Write your response here"
+              [(ngModel)] = "response" name = "response" ></textarea>
+  </div>
+
+  <div class="struct">
+    <button (click) = "sent()" class = "btn btn-success"> Send </button>
+  </div>
+</div>

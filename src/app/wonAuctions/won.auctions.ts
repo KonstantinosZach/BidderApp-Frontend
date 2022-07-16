@@ -4,7 +4,6 @@ import {SellerService} from "../seller.service";
 import {BidderService} from "../bidder.service";
 import {UserService} from "../user.service";
 import {Items} from "../item";
-import {Bids} from "../bid";
 
 @Component( {
   selector: `app-winnings-page`,

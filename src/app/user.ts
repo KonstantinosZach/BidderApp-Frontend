@@ -10,7 +10,6 @@ export interface User {
   address: string;
   postNumber: string;
   afm: string;
-  imageUrl: string;
   admin: boolean;
   accepted: boolean;
   sent: Message[],

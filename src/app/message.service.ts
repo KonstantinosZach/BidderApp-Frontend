@@ -23,8 +23,16 @@ export class MessageService {
     return this.http.get<Message[]>(`${this.apiServerUrl}/message/find-received/${username}`);
   }
 
+  public getAllSentMessages(username: String | undefined): Observable<Message[]> {
+    return this.http.get<Message[]>(`${this.apiServerUrl}/message/find-sent/${username}`);
+  }
+
   public getSenderByMessageId(id: bigint): Observable<User> {
     return this.http.get<User>(`${this.apiServerUrl}/message/find-sender/${id}`);
+  }
+
+  public getReceiverByMessageId(id: bigint): Observable<User> {
+    return this.http.get<User>(`${this.apiServerUrl}/message/find-receiver/${id}`);
   }
 
   public getMessageById(id: bigint): Observable<Message> {
@@ -33,6 +41,10 @@ export class MessageService {
 
   public deleteReceivedMessage(id: bigint): Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/message/delete-received/${id}`);
+  }
+
+  public deleteSentMessage(id: bigint): Observable<void> {
+    return this.http.delete<void>(`${this.apiServerUrl}/message/delete-sent/${id}`);
   }
 
   public messageIsRead(id: bigint): Observable<void> {

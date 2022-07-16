@@ -1,0 +1,26 @@
+.struct{
+  text-align: center;
+  margin-top: 100px;
+}
+
+.inner-struct{
+  text-align: center;
+}
+
+.text-body{
+  font-size: x-large;
+}
+
+.message{
+  width: 500px;
+  height: 150px;
+}
+
+.theme{
+  width: 500px;
+  height: 30px;
+}
+
+col-sm{
+  position: absolute;
+}

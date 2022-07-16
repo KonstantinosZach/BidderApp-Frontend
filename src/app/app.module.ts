@@ -28,6 +28,7 @@ import { wonAuctions } from "./wonAuctions/won.auctions";
 import { messageList } from "./messageList/message.list";
 import { MessageDetails } from "./messageDetails/message.details";
 import { startMessage } from "./startMessage/start.message";
+import { sentMessages } from "./sentMessages/sent.messages";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { startMessage } from "./startMessage/start.message";
     wonAuctions,
     messageList,
     MessageDetails,
-    startMessage
+    startMessage,
+    sentMessages
   ],
   imports: [
     BrowserModule,

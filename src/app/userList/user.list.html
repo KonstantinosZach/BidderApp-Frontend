@@ -13,7 +13,7 @@
       <th>Username</th>
       <th>First Name</th>
       <th>Address</th>
-      <th>Password</th>
+      <th hidden >Password</th>
       <th>Lastname</th>
       <th>Email</th>
       <th>Phone</th>
@@ -28,7 +28,7 @@
         <td *ngIf="user.accepted" > {{ user.username}}</td>
         <td *ngIf="user.accepted" > {{user.firstname}}</td>
         <td *ngIf="user.accepted"> {{user.address}}</td>
-        <td *ngIf="user.accepted"> {{user.password}}</td>
+        <td hidden *ngIf="user.accepted"> {{user.password}}</td>
         <td *ngIf="user.accepted"> {{user.lastname}}</td>
         <td *ngIf="user.accepted"> {{user.email}}</td>
         <td *ngIf="user.accepted"> {{user.phone}}</td>
