@@ -9,7 +9,7 @@ import { environment } from "../environments/environment";
   providedIn: 'root'
 })
 export class UserService {
-  private apiServerUrl = environment.apiBaseUrl;
+  private apiServerUrl = 'https://localhost:8080';
 
   constructor(private http: HttpClient) {}
 
@@ -30,6 +30,7 @@ export class UserService {
   }
 
   public getUserByUsername(username: String | undefined): Observable<User>{
+    console.log(this.apiServerUrl);
     return this.http.get<User>(`${this.apiServerUrl}/user/find/${username}`);
   }
 

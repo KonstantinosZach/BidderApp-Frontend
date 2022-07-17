@@ -13,7 +13,7 @@ import {User} from "./user";
   providedIn: 'root'
 })
 export class BidderService {
-  private apiServerUrl = environment.apiBaseUrl;
+  private apiServerUrl = 'https://localhost:8080';
 
   constructor(private http: HttpClient) {}
 

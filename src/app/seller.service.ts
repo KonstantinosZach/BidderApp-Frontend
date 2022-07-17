@@ -12,7 +12,7 @@ import {Bids} from "./bid";
   providedIn: 'root'
 })
 export class SellerService {
-  private apiServerUrl = environment.apiBaseUrl;
+  private apiServerUrl = 'https://localhost:8080';
 
   constructor(private http: HttpClient) {}
 

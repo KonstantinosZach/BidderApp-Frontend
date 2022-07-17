@@ -11,7 +11,7 @@ import {Bidder} from "./bidder";
   providedIn: 'root'
 })
 export class MessageService {
-  private apiServerUrl = environment.apiBaseUrl;
+  private apiServerUrl = 'https://localhost:8080';
 
   constructor(private http: HttpClient) {}
 
