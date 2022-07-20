@@ -19,12 +19,12 @@ export class pendingPage implements  OnInit {
   ngOnInit():void {
     this.username = this.router.snapshot.params[`username`];
 
-    this.userService.getUserByUsername(this.username).subscribe(data => {
-        this.user = data;
-        if(this.user.accepted === true)
-          this.back.navigate([`user-detail`,this.user.username]);
-      },
-      error => console.log(error));
+    // this.userService.getUserByUsername(this.username).subscribe(data => {
+    //     this.user = data;
+    //     if(this.user.accepted === true)
+    //       this.back.navigate([`user-detail`,this.user.username]);
+    //   },
+    //   error => console.log(error));
   }
 
 }

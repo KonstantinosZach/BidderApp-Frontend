@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { UserList } from "./userList/user.list";
 import { CreateUser } from  "./createUser/create.user"
 import { AppRoutingModule } from "./app.routing";
@@ -29,6 +29,7 @@ import { messageList } from "./messageList/message.list";
 import { MessageDetails } from "./messageDetails/message.details";
 import { startMessage } from "./startMessage/start.message";
 import { sentMessages } from "./sentMessages/sent.messages";
+import {JwtInterceptorService} from "./helpers/jwt.interceptor.service";
 
 @NgModule({
   declarations: [
@@ -64,7 +65,11 @@ import { sentMessages } from "./sentMessages/sent.messages";
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,7 +22,7 @@ export class startMessage implements  OnInit {
               private messageService: MessageService, private navRouter: Router, private bidderService: BidderService) {}
 
   ngOnInit():void {
-    this.sender = this.router.snapshot.params['username1'];
+    this.sender = this.router.snapshot.params['username'];
     this.receiver = this.router.snapshot.params['username2'];
   }
 

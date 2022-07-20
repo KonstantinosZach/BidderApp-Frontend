@@ -2,6 +2,8 @@ import { Component, OnInit} from "@angular/core";
 import {User} from "../user";
 import {UserService} from "../user.service";
 import {Router} from "@angular/router";
+import {authService} from "../auth.service";
+import {AuthRequest} from "../auth.request";
 
 @Component( {
   selector: `log-in-user`,
@@ -11,32 +13,44 @@ import {Router} from "@angular/router";
 
 export class LogInUser implements  OnInit {
 
-  username: String | undefined;
-  password: String | undefined;
+  username: string | undefined;
+  password: string | undefined;
   user: User = {} as User;
+  authRequest: AuthRequest = {} as AuthRequest;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private  authService: authService, private router: Router) {}
 
   ngOnInit():void {}
 
+  goToUserPage(){
+    console.log(this.authService.getToken());
+    this.userService.getUserByUsername(this.username).subscribe(data => {
+      this.user = data;
+      console.log(data);
+      if(this.user.admin)
+        this.router.navigate([`admin-page`]);
+      else if(!this.user.accepted)
+        this.router.navigate([`pending-page/`, this.username]);
+      else
+        this.router.navigate([`user-page/`, this.username]);
+    })
+  }
+
   logIn(){
-    this.userService.getUserByUsername(this.username).subscribe(data =>{
-        console.log(data);
-        this.user = data;
-        if(this.user.password === this.password)
-          if(this.user.admin === true)
-            this.router.navigate([`admin-page`]);
-          else if(this.user.accepted === false)
-            this.router.navigate([`pending-page/`, this.username]);
-          else
-            this.router.navigate([`user-page/`, this.username]);
-        else
-          alert("invalid password")
+    if (this.username != null && this.password != null) {
+      this.authRequest.username = this.username;
+      this.authRequest.password = this.password;
+      this.authService.authUser(this.authRequest).subscribe(data => {
+        this.goToUserPage();
       },
-      error => {
-      console.log(error)
-        alert("invalid username")}
-    )}
+        error => {
+          alert("Wrong password inserted");
+        })
+    }
+    else{
+      alert("Error on input...\nTry again!")
+    }
+  }
 
   onSubmit(){
     console.log(this.username, this.password);

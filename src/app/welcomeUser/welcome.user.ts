@@ -1,4 +1,5 @@
 import { Component, OnInit} from "@angular/core";
+import {authService} from "../auth.service";
 
 @Component( {
   selector: `welcome-user`,
@@ -8,8 +9,11 @@ import { Component, OnInit} from "@angular/core";
 
 export class WelcomeUser implements  OnInit {
 
-  constructor() {}
+  constructor(private authService: authService) {}
 
-  ngOnInit():void {}
+  ngOnInit():void {
+    this.authService.deleteToken();
+    this.authService.deleteUserName();
+  }
 
 }

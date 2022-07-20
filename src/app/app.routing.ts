@@ -24,34 +24,35 @@ import {messageList} from "./messageList/message.list";
 import {MessageDetails} from "./messageDetails/message.details";
 import {startMessage} from "./startMessage/start.message";
 import {sentMessages} from "./sentMessages/sent.messages";
+import {AuthGuard} from "./guard/auth.guard";
 
 
 const routes: Routes = [
-  {path: `users`, component: UserList},
+  {path: `users`, component: UserList, canActivate:[AuthGuard]},
   {path: `create-user`, component: CreateUser},
-  {path: `update-user/:username`, component: UpdateUser},
-  {path: `user-page/:username/user-detail`, component: userDetail},
+  {path: `update-user/:username`, component: UpdateUser, canActivate:[AuthGuard]},
+  {path: `user-page/:username/user-detail`, component: userDetail, canActivate:[AuthGuard]},
   {path: `welcome-user`, component: WelcomeUser},
   {path: `log-in-user`, component: LogInUser},
-  {path: `admin-page`, component: adminPage},
+  {path: `admin-page`, component: adminPage, canActivate:[AuthGuard]},
   {path: `pending-page/:username`, component: pendingPage},
-  {path: `pending-user-list`, component: PendingUserList},
+  {path: `pending-user-list`, component: PendingUserList, canActivate:[AuthGuard]},
   {path: ``, redirectTo: `welcome-user`, pathMatch: `full`},
-  {path: `user-page/:username`, component: userPage},
-  {path: `user-page/:username/selling-page`, component: SellingPage},
-  {path: `user-page/:username/selling-page/old-items-list-page`, component: OldItemsList},
-  {path: `user-page/:username/selling-page/create-auction`, component: createAuction},
-  {path: `user-page/:username/selling-page/:id/start-auction`, component: startAuction},
-  {path: `user-page/:username/selling-page/:id/update-item`, component: UpdateItem},
-  {path: `user-page/:username/create-bidder`, component: createBidder},
-  {path: `user-page/:username/bidding-page`, component: bidderPage},
-  {path: `user-page/:username/bidding-page/:id/make-bid`, component: makeBid},
-  {path: `user-page/:username/bid-list/:id`, component: BidList},
-  {path: `user-page/:username/winnings-page`, component: wonAuctions},
-  {path: `user-page/:username/message-list`, component: messageList},
-  {path: `user-page/:username/message-details/:id`, component: MessageDetails},
-  {path: `user-page/:username/sent-messages`, component: sentMessages},
-  {path: `user-page/:username1/start-message/:username2`, component: startMessage},
+  {path: `user-page/:username`, component: userPage, canActivate:[AuthGuard]},
+  {path: `user-page/:username/selling-page`, component: SellingPage, canActivate:[AuthGuard]},
+  {path: `user-page/:username/selling-page/old-items-list-page`, component: OldItemsList, canActivate:[AuthGuard]},
+  {path: `user-page/:username/selling-page/create-auction`, component: createAuction, canActivate:[AuthGuard]},
+  {path: `user-page/:username/selling-page/:id/start-auction`, component: startAuction, canActivate:[AuthGuard]},
+  {path: `user-page/:username/selling-page/:id/update-item`, component: UpdateItem, canActivate:[AuthGuard]},
+  {path: `user-page/:username/create-bidder`, component: createBidder, canActivate:[AuthGuard]},
+  {path: `user-page/:username/bidding-page`, component: bidderPage, canActivate:[AuthGuard]},
+  {path: `user-page/:username/bidding-page/:id/make-bid`, component: makeBid, canActivate:[AuthGuard]},
+  {path: `user-page/:username/bid-list/:id`, component: BidList, canActivate:[AuthGuard]},
+  {path: `user-page/:username/winnings-page`, component: wonAuctions, canActivate:[AuthGuard]},
+  {path: `user-page/:username/message-list`, component: messageList, canActivate:[AuthGuard]},
+  {path: `user-page/:username/message-details/:id`, component: MessageDetails, canActivate:[AuthGuard]},
+  {path: `user-page/:username/sent-messages`, component: sentMessages, canActivate:[AuthGuard]},
+  {path: `user-page/:username/start-message/:username2`, component: startMessage, canActivate:[AuthGuard]},
 ];
 
 @NgModule({
