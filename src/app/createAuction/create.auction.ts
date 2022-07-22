@@ -26,7 +26,6 @@ export class createAuction implements  OnInit {
     this.item.currently = this.item.firstBid;
     this.item.category = "";
     this.categories?.forEach( category =>{
-      console.log(category);
       this.item.category += " " + category;
     })
 
@@ -48,15 +47,15 @@ export class createAuction implements  OnInit {
   saveItem(){
     this.sellerService.addItem(this.username, this.item).subscribe({
       complete: () => {
-        console.log(this.item),
           this.navRouter.navigate([`user-page`,this.username,`selling-page`])
       },
-      error: () => {console.log(this.item); alert("Wrong input... try again")}
+      error: () => {
+        alert("Wrong input... try again")
+      }
     })
   }
 
   onSubmit(){
-    console.log(this.item);
     this.completeItem();
   }
 

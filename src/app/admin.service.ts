@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { environment } from "../environments/environment";
 import {Items} from "./item";
 
 //same as manually in providers
@@ -9,7 +8,7 @@ import {Items} from "./item";
   providedIn: 'root'
 })
 export class adminService {
-  private apiServerUrl = environment.apiBaseUrl;
+  private apiServerUrl = 'https://localhost:8080';
 
   constructor(private http: HttpClient) {}
 

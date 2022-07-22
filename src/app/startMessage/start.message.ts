@@ -1,9 +1,9 @@
 import { Component, OnInit} from "@angular/core";
 import {SellerService} from "../seller.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {BidderService} from "../bidder.service";
 import {MessageService} from "../message.service";
 import {Message} from "../message";
+import { Location } from '@angular/common';
 
 @Component( {
   selector: `app-start-message-page`,
@@ -19,11 +19,15 @@ export class startMessage implements  OnInit {
   theme : string | undefined;
 
   constructor(private sellerService: SellerService, private router: ActivatedRoute,
-              private messageService: MessageService, private navRouter: Router, private bidderService: BidderService) {}
+              private messageService: MessageService, private navRouter: Router, private location: Location) {}
 
   ngOnInit():void {
     this.sender = this.router.snapshot.params['username'];
     this.receiver = this.router.snapshot.params['username2'];
+  }
+
+  goBack(){
+    this.location.back();
   }
 
   sent(){

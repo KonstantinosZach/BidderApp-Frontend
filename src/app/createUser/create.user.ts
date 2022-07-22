@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 export class CreateUser implements  OnInit {
 
   user: User = {} as User;
+  verify: string = "";
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -21,17 +22,24 @@ export class CreateUser implements  OnInit {
 
   //the correct way, not deprecated
   saveUser(){
-    this.userService.addUser(this.user).subscribe({
-      complete: () => {
-        console.log(),
-        this.router.navigate([`pending-page/`, this.user.username])
-      },
-      error: () => {console.log(); alert("User already exists")}
-    })
+    if(this.verify != this.user.password){
+      alert("Passwords does not match!");
+    }
+    else {
+      this.userService.addUser(this.user).subscribe({
+        complete: () => {
+          console.log(),
+            this.router.navigate([`pending-page/`, this.user.username])
+        },
+        error: () => {
+          console.log();
+          alert("User already exists")
+        }
+      })
+    }
   }
 
   onSubmit(){
-    console.log(this.user);
     this.saveUser();
   }
 

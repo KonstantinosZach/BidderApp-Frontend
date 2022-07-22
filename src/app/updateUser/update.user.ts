@@ -27,7 +27,6 @@ export class UpdateUser implements  OnInit {
 
   updateUser(){
     this.userService.updateUser(this.username, this.user).subscribe(data =>{
-      console.log(data);
       this.user = {} as User;
       this.back.navigate([`users`]);
     },
@@ -35,7 +34,6 @@ export class UpdateUser implements  OnInit {
   }
 
   onSubmit(){
-    console.log(this.user);
     this.updateUser();
   }
 }

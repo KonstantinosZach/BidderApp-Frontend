@@ -39,12 +39,7 @@ export class bidderPage implements  OnInit {
 
   isBidder(){
     this.bidderService.getBidderByUsername(this.username).subscribe( result => {
-      if (result) {
-        console.log(result);
-        this.bidderValid = true;
-      } else {
-        this.bidderValid = false;
-      }
+      this.bidderValid = !!result;
     })
   }
 

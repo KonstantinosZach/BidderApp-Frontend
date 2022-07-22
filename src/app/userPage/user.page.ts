@@ -37,23 +37,13 @@ export class userPage implements  OnInit {
 
   isSeller(){
     this.sellerService.getSellerByUsername(this.username).subscribe( result => {
-      if (result) {
-        console.log(result);
-        this.sellerValid = true;
-      } else {
-        this.sellerValid = false;
-      }
+      this.sellerValid = !!result;
     })
   }
 
   isBidder(){
     this.bidderService.getBidderByUsername(this.username).subscribe( result => {
-      if (result) {
-        console.log(result);
-        this.bidderValid = true;
-      } else {
-        this.bidderValid = false;
-      }
+      this.bidderValid = !!result;
     })
   }
 
@@ -71,10 +61,11 @@ export class userPage implements  OnInit {
   }
 
   createSeller(){
-    this.sellerService.addSeller(this.username).subscribe( data =>{
-      console.log(data);
-      this.navRouter.navigate([`user-page`,this.username,`selling-page`]);
-    });
+    if(confirm("To become seller you need to re-login\nConfirm?")){
+      this.sellerService.addSeller(this.username).subscribe( data =>{
+        this.navRouter.navigate([`welcome-user`]);
+      });
+    }
   }
 
   createBidder(){

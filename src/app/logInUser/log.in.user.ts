@@ -23,10 +23,8 @@ export class LogInUser implements  OnInit {
   ngOnInit():void {}
 
   goToUserPage(){
-    console.log(this.authService.getToken());
     this.userService.getUserByUsername(this.username).subscribe(data => {
       this.user = data;
-      console.log(data);
       if(this.user.admin)
         this.router.navigate([`admin-page`]);
       else if(!this.user.accepted)
@@ -53,7 +51,6 @@ export class LogInUser implements  OnInit {
   }
 
   onSubmit(){
-    console.log(this.username, this.password);
     this.logIn();
   }
 

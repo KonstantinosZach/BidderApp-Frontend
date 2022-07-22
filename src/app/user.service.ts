@@ -30,7 +30,6 @@ export class UserService {
   }
 
   public getUserByUsername(username: String | undefined): Observable<User>{
-    console.log(this.apiServerUrl);
     return this.http.get<User>(`${this.apiServerUrl}/user/find/${username}`);
   }
 

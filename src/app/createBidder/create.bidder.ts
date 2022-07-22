@@ -21,17 +21,21 @@ export class createBidder implements  OnInit {
   }
 
   saveBidder(){
-    this.bidderService.addBidder(this.username, this.bidder).subscribe({
-      complete: () => {
-        console.log(),
-          this.navRouter.navigate([`user-page/`, this.username,]);
-      },
-      error: () => {console.log(); alert("Wrong data inserted")}
-    })
+    if (confirm("To become bidder you need to re-login\nConfirm?")) {
+      this.bidderService.addBidder(this.username, this.bidder).subscribe({
+        complete: () => {
+          console.log(),
+            this.navRouter.navigate([`welcome-user`]);
+        },
+        error: () => {
+          console.log();
+          alert("Wrong data inserted")
+        }
+      })
+    }
   }
 
   onSubmit(){
-    console.log(this.bidder);
     this.saveBidder();
   }
 }

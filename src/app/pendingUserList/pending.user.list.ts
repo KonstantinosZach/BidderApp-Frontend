@@ -28,19 +28,12 @@ export class PendingUserList implements  OnInit {
 
   acceptUser(username: String){
     this.userService.acceptUser(username).subscribe( data =>{
-      console.log(data);
       this.getUsers();
     })
   }
 
-  // detailUser(username: String){
-  //   //this.router.navigate([`user-detail`,username]);
-  //   this.router.navigate([`user-page`, username, `user-detail`]);
-  // }
-
   deleteUser(username: String){
     this.userService.deleteUser(username).subscribe( data =>{
-      console.log(data);
       this.getUsers();
     })
   }

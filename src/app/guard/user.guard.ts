@@ -3,12 +3,14 @@ import {Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Activa
 import {authService} from "../auth.service";
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuard implements CanActivate {
+export class UserGuard implements CanActivate {
 
   constructor(private router: Router, private authService: authService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if(this.authService.getToken()){
+
+    let username = route.params['username'];
+    if(username != undefined && username == this.authService.getUserName()){
       return true;
     }
 

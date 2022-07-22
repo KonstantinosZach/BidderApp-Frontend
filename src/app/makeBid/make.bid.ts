@@ -42,7 +42,6 @@ export class makeBid implements  OnInit {
           this.item.numberOfBids = this.item.numberOfBids + 1;
 
           this.sellerService.updateSellingItem(this.id, this.item).subscribe(data =>{
-              console.log(data);
               this.sellerService.getItemById(this.id).subscribe(data =>{
                 this.item = data;
               })
@@ -65,7 +64,6 @@ export class makeBid implements  OnInit {
     this.id = this.router.snapshot.params['id'];
     this.sellerService.getItemById(this.id).subscribe(data =>{
       this.item = data;
-      console.log(data);
       setTimeout(() => {
         if(this.item.latitude != undefined && this.item.longitude != undefined) {
           let map = L.map("map").setView([Number(this.item.latitude), Number(this.item.longitude)], 13);

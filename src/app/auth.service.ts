@@ -13,6 +13,7 @@ export class authService {
   private apiServerUrl = 'https://localhost:8080';
   private readonly TOKEN_NAME = 'accessToken';
   private readonly USER_NAME = 'username';
+  roles: string = "";
   constructor(private http: HttpClient) {}
 
 
@@ -43,4 +44,10 @@ export class authService {
     )
   }
 
+  public getRoles():string{
+    let token = this.getToken();
+    if(token != null)
+      this.roles = JSON.parse((atob(token.split('.')[1]))).roles;
+    return this.roles;
+  }
 }
